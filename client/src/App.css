@@ -140,10 +140,6 @@ body {
   margin-top: 10px;
 }
 
-.hidden{
-  opacity: 0;
-}
-
 .gallery-object-container {
   background: black;
   padding-left: 5px;
@@ -153,6 +149,43 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.img-upload-modal{
+  color: whitesmoke;
+  font-size: 1rem;
+  position: fixed;
+  left: 30%;
+  bottom: 25%;
+  width: 50%;
+  height: 45%;
+  max-height: 35%;
+  border-bottom: 2px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  
+  justify-content: space-around;
+  z-index: 20;
+}
+
+.img-upload-modal-background{
+  background: black;
+  opacity: .5;
+  font-size: 1rem;
+  position: fixed;
+  left: 30%;
+  bottom: 25%;
+  width: 50%;
+  height: 45%;
+  max-height: 35%;
+
+  z-index: 10;
+}
+
+.hidden{
+  opacity: 0;
+}
+
 
 .galleryObj {
   width:  150px;
