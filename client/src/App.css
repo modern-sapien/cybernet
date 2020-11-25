@@ -1,5 +1,5 @@
 html {
-  height: 100vh;
+  height: 100%;
   margin: 0;
 }
 
@@ -23,9 +23,8 @@ body {
 }
 
 .header-nav {
-  opacity: .2;
+  opacity: 1;
   border-bottom: 5px solid black;
-  /* background: black; */
   font-weight: bolder;
   font-size: 24px;
   text-shadow: 1px 1px 5px yellow;
@@ -37,4 +36,35 @@ body {
   padding-top: 5px;
   padding-left: 20px;
   z-index: 10;
+}
+
+.bottom-background {
+  font-weight: bolder;
+  font-size: 24px;
+  text-shadow: 1px 1px 5px yellow;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  z-index: 20;
+}
+
+.bottom-nav {
+  opacity: .25;
+  background: black;
+  border-top: 5px solid black;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-left: 20px;
+  z-index: 10;
+}
+
+.grid-container {
+  display: grid;
+  
 }

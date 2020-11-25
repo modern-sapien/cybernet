@@ -5,7 +5,6 @@ const Header = () => {
         <>
         <div className="header-background">CYBERNET</div>
         <div className="header-nav"> </div> 
-        
         </>
     );
 };

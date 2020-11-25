@@ -3,6 +3,7 @@ import axios from "axios"
 import './App.css';
 import MainGallery from "./containers/Main/Main"
 import Header from "./components/Header/Header"
+import NavBarBtm from "./components/NavBarBtm/NavBarBtm"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
     <div className="App">
       <Header />
       <MainGallery />
+      <NavBarBtm />
     </div>
   );
 }
