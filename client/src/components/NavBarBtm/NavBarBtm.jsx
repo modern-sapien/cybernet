@@ -39,7 +39,6 @@ const NavBarBtm = () => {
     return (
         <>
         <SearchModal /> 
-        
         <div className="bottom-background row">
         <div className="col s1 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />

@@ -1,4 +1,5 @@
-import React from 'react';
+import SearchObj from "./../SearchObj/SearchObj"
+
 
 const SearchModal = () => {
     return (
@@ -9,13 +10,13 @@ const SearchModal = () => {
             <form className="col s12 m12 l12 nomargin-nopadding" action="">
                 <input type="text"/>
             </form>
-            <div className="searchObj col s12 m12 l12 ">userObject</div>
-            <div className="searchObj col s12 m12 l12">userObject</div>
-            <div className="searchObj col s12 m12 l12">userObject</div>
-            <div className="searchObj col s12 m12 l12">userObject</div>
-            <div className="searchObj col s12 m12 l12">userObject</div>
-            <div className="searchObj col s12 m12 l12">userObject</div>
-            <div className="searchObj col s12 m12 l12">userObject</div>
+            <SearchObj />
+            <SearchObj />
+            <SearchObj />
+            <SearchObj />
+            <SearchObj />
+            <SearchObj />
+            <SearchObj />
         </div>
         <div className="search-modal-background "></div>
     </>
