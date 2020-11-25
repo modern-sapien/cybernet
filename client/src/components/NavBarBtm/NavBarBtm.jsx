@@ -1,21 +1,49 @@
 import React from 'react';
+import NavBarIcons from "./../NavBarIcons/NavBarIcons"
+import account_img from "./assets/account.png"
+import gallery_img from "./assets/gallery.png"
+import messages_img from "./assets/messages.png"
+import search_img from "./assets/search.png"
+import upload_img from "./assets/upload.png"
+
+const clickMe = () => {
+    console.log("i've been clicked")
+}
+
+const icons = [
+        {id: 1,
+        name: "search",
+        img: search_img,
+        clickMe: clickMe},
+        {id: 2,
+        name: "gallery",
+        img: gallery_img,
+        clickMe: clickMe},
+        {id: 3,
+        name: "messages",
+        img: messages_img,
+        clickMe: clickMe},
+        {id: 4,
+        name: "upload",
+        img: upload_img,
+        clickMe: clickMe},
+        {id: 5,
+        name: "account",
+        img: account_img,
+        clickMe: clickMe},
+]
 
 const NavBarBtm = () => {
+
     return (
         <>
         <div className="bottom-background row">
         <div className="col s1 bottom-nav-content"></div>
-        <div className="col s2">search</div>
-        <div className="col s2">message</div>
-        <div className="col s2">gallery</div>
-        <div className="col s2">create</div>
-        <div className="col s2">account</div>
-        <div className="col s1"></div> 
+       <NavBarIcons icons={icons} />
+        <div className="col s1 bottom-nav-content"></div> 
             </div>
         <div className="bottom-nav">  
-        </div> 
-      
-        
+        </div>       
         </>
     );
 };
