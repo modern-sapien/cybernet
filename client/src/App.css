@@ -24,9 +24,9 @@ body {
 
 .header-nav {
   opacity: 1;
-  border-bottom: 5px solid black;
+  /* border-bottom: 5px solid black; */
   font-weight: bolder;
-  font-size: 24px;
+  font-size: 1.25rem;
   text-shadow: 1px 1px 5px yellow;
   height: 50px;
   position: fixed;
@@ -42,7 +42,7 @@ body {
   font-weight: bolder;
   font-size: 1.5rem;
   text-shadow: 1px 1px 5px yellow;
-  height: 60px;
+  height: 30px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -54,7 +54,7 @@ body {
   opacity: .5;
   background: black;
   border-top: 5px solid black;
-  height: 100px;
+  height: 60px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -67,12 +67,20 @@ body {
 }
 
 .search-modal {
-  color: white;
-  border-top: 5px solid black;
+  color: whitesmoke;
+  /* font-weight: bolder; */
+  font-size: 1.2rem;
   position: fixed;
-  bottom: 0;
-  width: 300px;
-  height: 500px;
+  top: 15%;
+  left: 5%;
+  min-width: 250px;
+  width: 30%;
+  max-width: 300px;
+  height: 65%;
+  max-height: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
   z-index: 10;
 }
 
@@ -80,8 +88,32 @@ body {
   opacity: .5;
   background: black;
   position: fixed;
-  bottom: 0;
-  width: 300px;
-  height: 500px;
+  top: 15%;
+  left: 5%;
+  min-width: 250px;
+  width: 30%;
+  max-width: 300px;
+  height: 65%;
+  max-height: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
   z-index: 5;
+}
+
+.searchObj {
+  border: 2px solid whitesmoke;
+  opacity: .8;
+  background: black;
+  /* padding-left: 5px; */
+  margin-top: 10px;
+}
+
+.hidden{
+  opacity: 0;
+}
+
+.nomargin-nopadding{
+  margin: 0px !important;
+  padding: 0px !important;
 }

@@ -38,13 +38,14 @@ const NavBarBtm = () => {
 
     return (
         <>
-        <SearchModal />
+        <SearchModal /> 
+        
         <div className="bottom-background row">
         <div className="col s1 bottom-nav-content"></div>
-        
-       <NavBarIcons icons={icons} />
+        <NavBarIcons icons={icons} />
         <div className="col s1 bottom-nav-content"></div> 
-            </div>
+        </div>
+
         <div className="bottom-nav">  
         </div>       
         </>
