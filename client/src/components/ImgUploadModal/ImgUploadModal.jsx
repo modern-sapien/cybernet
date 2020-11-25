@@ -1,10 +1,10 @@
 const ImgUploadModal = () => {
   return (
     <>
-      <div className="row img-upload-modal">
+      <div className="img-upload-modal row">
           <div className="img-upload-form">
-          </div>
-          <form action="">
+          
+          <form action="" className="">
            <input
               className="col s8 m8 l8"
               type="file"
@@ -12,8 +12,10 @@ const ImgUploadModal = () => {
               name="img"
               accept="image/*"
             />
-            <div className="col s4 m4 l4 btn" value="File Upload">File Upload </div>
+            <div className="col s4 m4 l4 form-btn" value="File Upload">
+            File Upload</div>
           </form>
+          </div>
       </div>
 
       <div className="img-upload-modal-background"></div>
