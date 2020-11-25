@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import ThreeGallery from "./../../threeComponents/ThreeGallery/ThreeGallery"
 
 const Main = () => {
-
     useEffect(() => {
     dimensions()
     }, [])
@@ -11,10 +11,10 @@ const Main = () => {
     function dimensions() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      100,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      5000
+    100,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    500
     );
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setClearColor("#000000");
@@ -32,10 +32,10 @@ const Main = () => {
     });
 
     let controls = new OrbitControls(camera, renderer.domElement);
-    controls.maxDistance = 5000;
+    controls.maxDistance = 500;
 
     // start position cam
-    camera.position.set(0, 2800, 140);
+    camera.position.set(1, 1, 1);
 
     // Base Scene Light
     const baseLight = () => {
@@ -44,17 +44,17 @@ const Main = () => {
     };
 
     baseLight();
-    baseLight();
-    baseLight();
 
     function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
     }
     animate();
-    
+
+    ThreeGallery(scene, camera, renderer);
     }
 
+    
 
     return (
       <div id="myCanvas"></div>
