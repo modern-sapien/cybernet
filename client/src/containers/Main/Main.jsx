@@ -4,6 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import ThreeGallery from "./../../threeComponents/ThreeGallery/ThreeGallery"
 import ThreeImagePlane from "./../../threeComponents/ThreeImagePlane/ThreeImagePlane"
 
+
 const Main = () => {
     useEffect(() => {
     dimensions()

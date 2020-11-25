@@ -28,7 +28,7 @@ const ThreeGallery = (scene, camera, renderer) => {
           materialArray[i].side = THREE.DoubleSide;
         }
 
-        let skyboxGeo = new THREE.BoxGeometry(1000, 300, 600)
+        let skyboxGeo = new THREE.BoxGeometry(1000, 400, 600)
         let skybox = new THREE.Mesh(skyboxGeo, materialArray)
         scene.add(skybox);
     }
