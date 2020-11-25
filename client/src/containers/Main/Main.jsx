@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import ThreeGallery from "./../../threeComponents/ThreeGallery/ThreeGallery"
+import ThreeImagePlane from "./../../threeComponents/ThreeImagePlane/ThreeImagePlane"
 
 const Main = () => {
     useEffect(() => {
@@ -35,7 +36,7 @@ const Main = () => {
     controls.maxDistance = 500;
 
     // start position cam
-    camera.position.set(1, 1, 1);
+    camera.position.set(-5, 5, -5);
 
     // Base Scene Light
     const baseLight = () => {
@@ -52,10 +53,12 @@ const Main = () => {
     animate();
 
     ThreeGallery(scene, camera, renderer);
-    }
+  
+    ThreeImagePlane(scene, camera, renderer);
 
-    
 
+
+  }  
     return (
       <div id="myCanvas"></div>
     );
