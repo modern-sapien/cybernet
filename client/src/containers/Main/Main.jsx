@@ -15,7 +15,7 @@ const Main = () => {
     100,
     window.innerWidth / window.innerHeight,
     0.1,
-    500
+    10000
     );
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setClearColor("#000000");
@@ -26,38 +26,28 @@ const Main = () => {
    
     // this is updating the of the scene ever time
     window.addEventListener("resize", () => {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.aspect = window.innerWidth / window.innerHeight;
-      // every time an adjustment is made on the camera this must be called
-      camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    // every time an adjustment is made on the camera this must be called
+    camera.updateProjectionMatrix();
     });
 
+    ThreeGallery(scene, camera, renderer);
+  
+    ThreeImagePlane(scene, camera, renderer);
+
     let controls = new OrbitControls(camera, renderer.domElement);
-    controls.maxDistance = 500;
+    controls.maxDistance = 1000;
 
     // start position cam
-    camera.position.set(-5, 5, -5);
-
-    // Base Scene Light
-    const baseLight = () => {
-    const light = new THREE.AmbientLight(0x404040, 1);
-    scene.add(light);
-    };
-
-    baseLight();
+    camera.position.set(-5, 5, -200);
+    controls.update()
 
     function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
     }
     animate();
-
-    ThreeGallery(scene, camera, renderer);
-  
-    ThreeImagePlane(scene, camera, renderer);
-
-
-
   }  
     return (
       <div id="myCanvas"></div>
