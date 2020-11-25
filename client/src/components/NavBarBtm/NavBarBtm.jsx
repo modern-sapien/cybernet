@@ -6,6 +6,7 @@ import messages_img from "./assets/messages.png"
 import search_img from "./assets/search.png"
 import upload_img from "./assets/upload.png"
 import SearchModal from "./../SearchModal/SearchModal"
+import GalleryModal from "./../GalleryModal/GalleryModal"
 
 const clickMe = () => {
     console.log("i've been clicked")
@@ -17,12 +18,12 @@ const icons = [
         img: search_img,
         clickMe: clickMe},
         {id: 2,
-        name: "gallery",
-        img: gallery_img,
-        clickMe: clickMe},
-        {id: 3,
         name: "messages",
         img: messages_img,
+        clickMe: clickMe},
+        {id: 3,
+        name: "gallery",
+        img: gallery_img,
         clickMe: clickMe},
         {id: 4,
         name: "upload",
@@ -38,7 +39,8 @@ const NavBarBtm = () => {
 
     return (
         <>
-        <SearchModal /> 
+        {/* <SearchModal    />  */}
+        <GalleryModal   />
         <div className="bottom-background row">
         <div className="col s1 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />
