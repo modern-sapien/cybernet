@@ -40,9 +40,9 @@ const NavBarBtm = () => {
 
     return (
         <>
-        {/* <SearchModal   />  */}
-        {/* <GalleryModal  /> */}
-        <ImgUploadModal    />
+        {/* <SearchModal />  */}
+        {/* <GalleryModal /> */}
+        {/* <ImgUploadModal /> */}
         <div className="bottom-background row">
         <div className="col s1 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />

@@ -183,8 +183,8 @@ body {
   left: 30%;
   bottom: 25%;
   width: 50%;
-  height: 15%;
-  max-height: 15%;
+  height: 20%;
+  max-height: 20%;
   /* border-bottom: 2px solid white; */
   padding-left: 5px;
   padding-right: 5px;
@@ -201,8 +201,8 @@ body {
   left: 30%;
   bottom: 25%;
   width: 50%;
-  height: 15%;
-  max-height: 15%;
+  height: 20%;
+  max-height: 20%;
   z-index: 10;
 }
 

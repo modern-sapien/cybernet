@@ -20,7 +20,7 @@ const ThreeGallery = (scene, camera, renderer) => {
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_ft}))
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_bk}))
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_up}))
-        materialArray.push(new THREE.MeshBasicMaterial({color: "0x000000"}))
+        materialArray.push(new THREE.MeshBasicMaterial({map: texture_dn}))
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_rt}))
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_lf}))
     
