@@ -2,7 +2,7 @@ import {useEffect} from "react"
 import axios from "axios"
 import './App.css';
 import MainGallery from "./containers/Main/Main"
-import Navbar from "./components/Navbar/Navbar"
+import Header from "./components/Header/Header"
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Header />
       <MainGallery />
     </div>
   );
