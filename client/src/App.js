@@ -1,7 +1,7 @@
 import {useEffect} from "react"
 import axios from "axios"
 import './App.css';
-import MainGallery from "./containers/Main/Main"
+import Main from "./containers/Main/Main"
 import Header from "./components/Header/Header"
 import NavBarBtm from "./components/NavBarBtm/NavBarBtm"
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <MainGallery />
+      <Main />
       <NavBarBtm />
     </div>
   );
