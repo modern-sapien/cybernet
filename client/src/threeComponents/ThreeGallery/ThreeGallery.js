@@ -1,4 +1,3 @@
-import React from 'react';
 import * as THREE from "three";
 import Cyber_bk from "./assets/cyber_bk.png"
 import Cyber_dn from "./assets/cyber_dn.png"
@@ -29,7 +28,7 @@ const ThreeGallery = (scene, camera, renderer) => {
           materialArray[i].side = THREE.DoubleSide;
         }
 
-        let skyboxGeo = new THREE.BoxGeometry(600, 250, 250)
+        let skyboxGeo = new THREE.BoxGeometry(600, 300, 250)
         let skybox = new THREE.Mesh(skyboxGeo, materialArray)
         scene.add(skybox);
     }

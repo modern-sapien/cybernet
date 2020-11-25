@@ -14,13 +14,13 @@ const ThreeImagePlane = (scene, camera, renderer) => {
         const material = new THREE.MeshBasicMaterial( {map: texture, side: THREE.DoubleSide} );
         const image = new THREE.Mesh( geometry, material );
         scene.add( image );
-        image.position.set((i*180)-180, 10, -123)
+        image.position.set((i*200)-200, 10, -123)
 
         const geometry1 = new THREE.PlaneGeometry(160, 160, 32);
         const material1 = new THREE.MeshBasicMaterial({color: 0x000000});
         const frame = new THREE.Mesh( geometry1, material1)
         scene.add(frame)
-        frame.position.set((i*180)-180, 10, -124)
+        frame.position.set((i*200)-200, 10, -124)
         }
     }
 
