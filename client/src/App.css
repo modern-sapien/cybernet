@@ -136,7 +136,7 @@ body {
 
 .searchObj {
   border: 2px solid whitesmoke;
-  opacity: .8;
+  opacity: .5;
   background: black;
   /* padding-left: 5px; */
   margin-top: 10px;
@@ -164,6 +164,13 @@ body {
   z-index: 22;
 }
 
+.img-upload-form-font{
+  opacity: .5;
+  color: whitesmoke;
+  font-size: 1rem;
+  z-index: 22;
+}
+
 .form-btn{
   font-size: 1.15rem;
   border: 2px solid whitesmoke;
@@ -176,12 +183,12 @@ body {
   left: 30%;
   bottom: 25%;
   width: 50%;
-  height: 5%;
-  max-height: 5%;
-  border-bottom: 2px solid white;
+  height: 15%;
+  max-height: 15%;
+  /* border-bottom: 2px solid white; */
   padding-left: 5px;
   padding-right: 5px;
-  padding-top: 5px;
+  padding-top: 25px;
   padding-bottom: 10px;
   justify-content: space-around;
   z-index: 20;
@@ -189,13 +196,13 @@ body {
 
 .img-upload-modal-background{
   background: black;
-  opacity: .8;
+  opacity: .5;
   position: fixed;
   left: 30%;
   bottom: 25%;
   width: 50%;
-  height: 8%;
-  max-height: 8%;
+  height: 15%;
+  max-height: 15%;
   z-index: 10;
 }
 

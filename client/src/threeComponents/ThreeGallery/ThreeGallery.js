@@ -20,14 +20,15 @@ const ThreeGallery = (scene, camera, renderer) => {
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_ft}))
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_bk}))
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_up}))
-        materialArray.push(new THREE.MeshBasicMaterial({map: texture_dn}))
+        materialArray.push(new THREE.MeshBasicMaterial({color: "0x000000"}))
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_rt}))
         materialArray.push(new THREE.MeshBasicMaterial({map: texture_lf}))
     
         for(let i=0; i < 6; i++)  {
           materialArray[i].side = THREE.DoubleSide;
         }
-
+        let material = new THREE.MeshBasicMaterial({color: "0x808080"})
+        material.side = THREE.DoubleSide
         let skyboxGeo = new THREE.BoxGeometry(1000, 400, 600)
         let skybox = new THREE.Mesh(skyboxGeo, materialArray)
         scene.add(skybox);
