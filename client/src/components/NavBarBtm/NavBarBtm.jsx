@@ -8,6 +8,7 @@ import upload_img from "./assets/upload.png"
 import SearchModal from "./../SearchModal/SearchModal"
 import GalleryModal from "./../GalleryModal/GalleryModal"
 import ImgUploadModal from "./../ImgUploadModal/ImgUploadModal"
+import LoginFormModal from "../LoginFormModal/LoginFormModal"
 
 const clickMe = () => {
     console.log("i've been clicked")
@@ -43,6 +44,8 @@ const NavBarBtm = () => {
         {/* <SearchModal />  */}
         {/* <GalleryModal /> */}
         {/* <ImgUploadModal /> */}
+        {/* <LoginFormModal /> */}
+        
         <div className="bottom-background row">
         <div className="col s1 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />
