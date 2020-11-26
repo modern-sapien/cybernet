@@ -7,7 +7,7 @@ const UserFormModal = () => {
         {/* <div className="row"> */}
         <div className="col s5 m5 l5">
         <img src="" alt=""/>
-            box</div>
+            image</div>
         <div className="col s7 m7 l7">
           <div className="row">
             <div className="col s6 m6 l6">images</div>
@@ -28,7 +28,7 @@ const UserFormModal = () => {
           Password
           <input type="password" />
           <div className="col s12 m12 l12 form-btn" value="File Upload">
-            Create Account
+            Update Account
           </div>
           <div className="col s12 m12 l12 form-btn" value="File Upload">
             Cancel
