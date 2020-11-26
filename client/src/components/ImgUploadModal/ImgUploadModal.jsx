@@ -5,7 +5,7 @@ const ImgUploadModal = () => {
           <div className="img-upload-form">
           
           <form action="" className="">
-                     <input
+            <input
               className="col s12 m12 l12 "
               type="file"
               id="img"

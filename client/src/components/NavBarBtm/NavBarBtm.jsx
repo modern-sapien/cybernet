@@ -9,6 +9,7 @@ import SearchModal from "./../SearchModal/SearchModal"
 import GalleryModal from "./../GalleryModal/GalleryModal"
 import ImgUploadModal from "./../ImgUploadModal/ImgUploadModal"
 import LoginFormModal from "../LoginFormModal/LoginFormModal"
+import UserFormModal from "../UserFormModal/UserFormModal"
 
 const clickMe = () => {
     console.log("i've been clicked")
@@ -38,14 +39,13 @@ const icons = [
 ]
 
 const NavBarBtm = () => {
-
     return (
         <>
         {/* <SearchModal />  */}
         {/* <GalleryModal /> */}
         {/* <ImgUploadModal /> */}
         {/* <LoginFormModal /> */}
-        
+        <UserFormModal />
         <div className="bottom-background row">
         <div className="col s1 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />

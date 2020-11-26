@@ -1,7 +1,7 @@
 const LoginFormModal = () => {
   return (
     <>
-      <div className="login-form-modal row">
+      <div className="login-modal row">
         <div className="col s11 m11 l11 nomargin-nopadding"></div>
         <div className="col s1 m1 l1">X</div>
         <form action="">
@@ -15,7 +15,7 @@ const LoginFormModal = () => {
             New User</div>
         </form>
       </div>
-      <div className="login-form-modal-background"></div>
+      <div className="login-modal-background"></div>
     </>
   );
 };
