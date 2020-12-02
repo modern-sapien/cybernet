@@ -1,14 +1,19 @@
 require("dotenv").config();
 const express = require("express");
+const morgan = require("morgan")
 const mongoose = require('mongoose');
 const path = require("path");
+// middleware
+const logger = require("./middleware/logger");
 
-const users = require("./routes/users")
+// routes
+const users = require("./routes/users");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+app.use(logger)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("client/build"));
