@@ -1,8 +1,16 @@
-require("dotenv").config();
 const express = require("express");
-const morgan = require("morgan")
+const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 const path = require("path");
+const morgan = require("morgan")
+const connectDB = require("./config/db");
+
+// Load env vars
+dotenv.config({path: `./config/config.env`});
+
+// Connect to database
+connectDB();
+
 // middleware
 const logger = require("./middleware/logger");
 
@@ -19,12 +27,12 @@ app.use(express.json());
 app.use(express.static("client/build"));
 app.use("/api/v1/users", users);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cybernet", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cybernet", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false,
+// });
 
 const connection = mongoose.connection;
 
