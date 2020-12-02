@@ -2,7 +2,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 const path = require("path");
-const morgan = require("morgan")
+const morgan = require("morgan");
+const colors = require("colors");
 const connectDB = require("./config/db");
 
 // Load env vars
@@ -11,28 +12,20 @@ dotenv.config({path: `./config/config.env`});
 // Connect to database
 connectDB();
 
-// middleware
-const logger = require("./middleware/logger");
-
 // routes
 const users = require("./routes/users");
 
 const PORT = process.env.PORT || 3001;
 
+// Middleware
 const app = express();
-
-app.use(logger)
+if(process.env.NODE_ENV === "development")  {
+  app.use(morgan("dev"));
+}
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("client/build"));
 app.use("/api/v1/users", users);
-
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cybernet", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false,
-// });
 
 const connection = mongoose.connection;
 
@@ -55,7 +48,13 @@ app.get("/api/config", (req, res) => {
 // });
 
 
-
-app.listen(PORT, () => {
-  console.log(`App is running on http://localhost:${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`.yellow.bold.inverse);
 });
+
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`Error: ${err.message}`.red.inverse)
+  // close server & exit process
+  server.close(() => process.exit(1));
+})
