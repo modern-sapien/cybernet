@@ -1,3 +1,5 @@
+const User = require("../models/User");
+
 // @desc    Get all users
 // @route   GET /api/v1/users
 // @access  Public
@@ -17,8 +19,13 @@ exports.getUser = (req, res, next) => {
 // @desc    Create new user
 // @route   POST /api/v1/users/
 // @access  Public
-exports.createUser = (req, res, next) => {
-  res.status(200).json({ success: true, msg: "create new user" });
+exports.createUser = async (req, res, next) => {
+  const user = await User.create(req.body);
+
+  res.status(201).json({
+    success: true,
+    data: user
+  })
 };
 
 // @desc    Update user
