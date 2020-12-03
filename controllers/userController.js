@@ -49,15 +49,22 @@ exports.createUser = async (req, res, next) => {
 // @desc    Update user
 // @route   PUT /api/v1/users/:id
 // @access  Private
-exports.updateUser = (req, res, next) => {
-  res
-    .status(200)
-    .json({ success: true, msg: `display updated user ${req.params.id}` });
+exports.updateUser = async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+  
+  if(!user) {
+    return res.status(400).json({success: false})
+  }
+
+  res.status(200).json({success: true, data: user})
 };
 
 // @desc    Delete user
 // @route   Delete /api/v1/users/:id
 // @access  Private
-exports.deleteUser = (req, res, next) => {
+exports.deleteUser = async (req, res, next) => {
   res.status(200).json({ success: true, msg: `delete user ${req.params.id}` });
 };
