@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const path = require("path");
 const morgan = require("morgan");
 const colors = require("colors");
+const errorHandler = require("./middleware/error")
 const connectDB = require("./config/db");
 
 // Load env vars
@@ -25,7 +26,12 @@ if(process.env.NODE_ENV === "development")  {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("client/build"));
+
+
+// Mount routers
 app.use("/api/v1/users", users);
+
+app.use(errorHandler);
 
 const connection = mongoose.connection;
 
