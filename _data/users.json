@@ -1,41 +1,48 @@
 [
     {
+        "_id": "5fcae83017f71d94c02c5cb4",
         "username": "Maliki",
         "email": "AllArtists@hotmail.com",
         "password": "Maliki",
         "website": "http://www.brutalistartbymaliki.com"
     },
     {
+        "_id": "5fcae83017f71d94c02c5cb6",
         "username": "Brittney_Spears",
         "email": "ItsBrittany@freebritney.com",
         "password": "Brittney",
         "website": "http://www.brittneyspears.com"
     },
     {
+        "_id": "5dcae83017f71d94c02c5664",
         "username": "modern-sapien",
         "email": "joncanales2@gmail.com",
         "password": "modern-sapien",
         "website": "http://www.jonathancanales.design"
     },
     {
+        "_id": "7fccc83017f71d94c02c5cb4",
         "username": "Andy Warhol",
         "email": "goldenphone@basquiatwasbetter.com",
         "password": "Andy",
         "website": "http://www.basquiat.com"
     },
     {
+        "_id": "5fcae83017f00004c02c5cb4",
         "username": "MasqueradeAtl",
         "email": "MasqueradeAtl@livemusic.com",
         "password": "MasqueradeAtl",
         "website": "http://www.masqueradeatlanta.com"
     },
     {
+        "_id": "7777e83017f71d94c02c5cb4",
         "username": "someInfluencer",
         "email": "paidforthepromo@gmail.com",
         "password": "someInfluencer",
         "website": "http://www.somethingcatchyhere.com"
     },
     {
+        "_id": "5fcae83017f71d94c02c9999",
         "username": "JoystickGamebar",
         "email": "JoystickGamebar@coolAtlantaplace.com",
         "password": "JoystickGamebar",
