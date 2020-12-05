@@ -13,7 +13,10 @@ exports.getImages = asyncHandler(async (req, res, next) => {
   if (req.params.userId) {
     query = Image.find({ user: req.params.userId });
   } else {
-    query = Image.find();
+    query = Image.find().populate({
+        path: "user",
+        select: "username photo"
+    });
   }
 
   const images = await query;

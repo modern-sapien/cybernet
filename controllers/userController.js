@@ -21,7 +21,7 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
   let queryStr = JSON.stringify(reqQuery);
 
   // finding resource
-  query = User.find(JSON.parse(queryStr));
+  query = User.find(JSON.parse(queryStr)).populate("images");
 
   // Pagination
   const page = parseInt(req.query.page, 8) || 1;

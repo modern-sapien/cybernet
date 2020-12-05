@@ -41,6 +41,9 @@ const UserSchema = new mongoose.Schema({
       type: Date,
       default: Date.now
   }
+}, {
+  toJSON: {virtuals: true},
+  toObject: {virtuals: true}
 });
 
 // Create user slug from name
@@ -48,6 +51,14 @@ UserSchema.pre("save", function(next)  {
   this.slug = slugify(this.username, { lower: true })
   // console.log('Slugify ran', this.username)
   next();
+})
+
+// reverse populate with virtuals
+UserSchema.virtual("images", {
+  ref: "Image",
+  localField: "_id",
+  foreignField: "user",
+  justOne: false
 })
 
 module.exports = mongoose.model("User", UserSchema)
