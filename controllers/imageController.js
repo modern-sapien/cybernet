@@ -66,3 +66,24 @@ exports.addImage = asyncHandler(async (req, res, next) => {
     data: image,
   });
 });
+
+// @desc    update image
+// @route   POST /api/v1/users/:userId/images
+// @access  Private
+exports.updateImage = asyncHandler(async (req, res, next) => {
+    let image = await Image.findById(req.params.userId)
+
+  if(!image)    {
+      return next(new ErrorResponse(`No image with the id of ${req.params.userid}`), 404)
+  }
+
+  image = await Image.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+  })
+
+  res.status(200).json({
+    success: true,
+    data: image,
+  });
+});
