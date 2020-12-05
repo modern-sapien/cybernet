@@ -68,13 +68,13 @@ exports.addImage = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    update image
-// @route   POST /api/v1/users/:userId/images
+// @route   PUT /api/v1/users/:userId/images
 // @access  Private
 exports.updateImage = asyncHandler(async (req, res, next) => {
-    let image = await Image.findById(req.params.userId)
+  let image = await Image.findById(req.params.id)
 
   if(!image)    {
-      return next(new ErrorResponse(`No image with the id of ${req.params.userid}`), 404)
+      return next(new ErrorResponse(`No image with the id of ${req.params.id}`), 404)
   }
 
   image = await Image.findByIdAndUpdate(req.params.id, req.body, {
@@ -87,3 +87,22 @@ exports.updateImage = asyncHandler(async (req, res, next) => {
     data: image,
   });
 });
+
+// @desc    delete image
+// @route   DELETE /api/v1/users/:userId/images
+// @access  Private
+exports.deleteImage = asyncHandler(async (req, res, next) => {
+  const image = await Image.findById(req.params.id)
+
+  if(!image)    {
+      return next(new ErrorResponse(`No image with the id of ${req.params.id}`), 404)
+  }
+
+  await image.remove()
+
+  res.status(200).json({
+    success: true,
+    data: {}
+  });
+});
+
