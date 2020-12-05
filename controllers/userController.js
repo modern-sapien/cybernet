@@ -6,32 +6,80 @@ const User = require("../models/User");
 // @route   GET /api/v1/users
 // @access  Public
 exports.getUsers = asyncHandler(async (req, res, next) => {
-    const users = await User.find()
-    res.status(200).json({ success: true, count: users.length, data: users });
+  let query;
+
+  // copy req.query
+  const reqQuery = { ...req.query };
+
+  // fields to exclude
+  const removeFields = ["page", "limit"];
+
+  // Loop over removeFields and delete them from reqQuery
+  removeFields.forEach((param) => delete reqQuery[param]);
+
+  // create query string
+  let queryStr = JSON.stringify(reqQuery);
+
+  // finding resource
+  query = User.find(JSON.parse(queryStr));
+
+  // Pagination
+  const page = parseInt(req.query.page, 8) || 1;
+  const limit = parseInt(req.query.limit, 10) || 8;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  const total = await User.countDocuments();
+
+  query = query.skip(startIndex).limit(limit);
+
+  const users = await query;
+
+  // Pagination result
+  const pagination = {};
+
+  if (endIndex < total) {
+    pagination.next = {
+      page: page + 1,
+      limit,
+    };
+  }
+
+  if (startIndex > 0) {
+    pagination.prev = {
+      page: page - 1,
+      limit,
+    };
+  }
+
+  res
+    .status(200)
+    .json({ success: true, count: users.length, pagination, data: users });
 });
 
 // @desc    Get single user
 // @route   GET /api/v1/users/:id
 // @access  Public
 exports.getUser = asyncHandler(async (req, res, next) => {
-    const user = await User.findById(req.params.id);
+  const user = await User.findById(req.params.id);
 
-    if (!user) {
-      return next(new ErrorResponse(`User not found with ID of ${req.params.id}`, 404));;
-    }
-    res.status(200).json({ success: true, data: user });
+  if (!user) {
+    return next(
+      new ErrorResponse(`User not found with ID of ${req.params.id}`, 404)
+    );
+  }
+  res.status(200).json({ success: true, data: user });
 });
 
 // @desc    Create new user
 // @route   POST /api/v1/users/
 // @access  Public
 exports.createUser = asyncHandler(async (req, res, next) => {
-    const user = await User.create(req.body);
+  const user = await User.create(req.body);
 
-    res.status(201).json({
-      success: true,
-      data: user,
-    });
+  res.status(201).json({
+    success: true,
+    data: user,
+  });
 });
 
 // @desc    Update user
