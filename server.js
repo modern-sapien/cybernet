@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 const path = require("path");
 const morgan = require("morgan");
+const fileupload = require("express-fileupload")
 const colors = require("colors");
 const errorHandler = require("./middleware/error")
 const connectDB = require("./config/db");
@@ -27,6 +28,8 @@ if(process.env.NODE_ENV === "development")  {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("client/build"));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(fileupload());
 
 
 // Mount routers

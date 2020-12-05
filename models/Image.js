@@ -4,11 +4,11 @@ const ImageSchema = new mongoose.Schema({
     title: {
         type: String,
         trim: true,
-        required: [true, "please add a title"]
+        required: [false, "please add a title"]
     },
     image: {
         type: String,
-        required: [true, 'please add an image']
+        required: [false, 'please add an image']
     },
     createdAt: {
         type: Date,
@@ -17,7 +17,7 @@ const ImageSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
-        required: true
+        required: false
     }
 })
 

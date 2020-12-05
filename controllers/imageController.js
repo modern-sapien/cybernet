@@ -1,7 +1,19 @@
+const path = require("path");
 const ErrorResponse = require("../utils/errorResponse");
+const mongoose = require("mongoose");
 const asyncHandler = require("../middleware/async");
 const Image = require("../models/Image");
 const User = require("../models/User");
+// const multer = require("multer");
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "./uploads/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.filename);
+//   },
+// });
+// const upload = multer({ dest: "uploads/" });
 
 // @desc    Get images
 // @route   GET /api/v1/images
@@ -14,8 +26,8 @@ exports.getImages = asyncHandler(async (req, res, next) => {
     query = Image.find({ user: req.params.userId });
   } else {
     query = Image.find().populate({
-        path: "user",
-        select: "username photo"
+      path: "user",
+      select: "username photo",
     });
   }
 
@@ -33,12 +45,15 @@ exports.getImages = asyncHandler(async (req, res, next) => {
 // @access  Public
 exports.getImage = asyncHandler(async (req, res, next) => {
   const image = await Image.findById(req.params.id).populate({
-      path: "user",
-      select: "username photo"
+    path: "user",
+    select: "username photo",
   });
 
-  if(!image)    {
-      return next(new ErrorResponse(`No image with the id of ${req.params.id}`), 404)
+  if (!image) {
+    return next(
+      new ErrorResponse(`No image with the id of ${req.params.id}`),
+      404
+    );
   }
 
   res.status(200).json({
@@ -50,20 +65,79 @@ exports.getImage = asyncHandler(async (req, res, next) => {
 // @desc    Add image
 // @route   POST /api/v1/users/:userId/images
 // @access  Private
+// exports.addImage = asyncHandler(async (req, res, next) => {
+//   console.log(req)
+//   req.params.user = req.params.userId;
+
+//     const user = await User.findById(req.params.userId)
+
+//   if(!user)    {
+//       return next(new ErrorResponse(`No user with the id of ${req.params.userid}`), 404)
+//   }
+
+//   const image = await Image.create(req.body)
+
+//   res.status(200).json({
+//     success: true,
+//     data: image,
+//   });
+// });
+
+// @desc    Add image with file image upload
+// @route   POST /api/v1/users/:userId/images
+// @access  Private
 exports.addImage = asyncHandler(async (req, res, next) => {
-    req.params.user = req.params.userId;
+  req.params.user = req.params.userId;
 
-    const user = await User.findById(req.params.userId)
+  const user = await User.findById(req.params.userId);
 
-  if(!user)    {
-      return next(new ErrorResponse(`No user with the id of ${req.params.userid}`), 404)
+  if (!user) {
+    return next(
+      new ErrorResponse(`No user with the id of ${req.params.userid}`),
+      404
+    );
   }
 
-  const image = await Image.create(req.body)
+  if (!req.files) {
+    return next(new ErrorResponse(`Issue with uploading the file`), 404);
+  }
 
-  res.status(200).json({
-    success: true,
-    data: image,
+  const file = req.files.file;
+
+  //make sure image is a photo
+  if (!file.mimetype.startsWith("image")) {
+    return next(new ErrorResponse(`Please upload an image file`), 400);
+  }
+
+  if (file.size > process.env.MAX_FILE_UPLOAD) {
+    return next(
+      new ErrorResponse(
+        `Please upload an image file less than ${process.env.MAX_FILE_UPLOAD}`
+      ),
+      400
+    );
+  }
+  console.log(req.files.file);
+  console.log(Date.now().toString())
+  // create custom filename
+  file.name = `${Date.now().toString()}${user._id}${path.parse(file.name).ext}`;
+
+  file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
+    if (err) {
+      console.error(err);
+      return next(new ErrorResponse(`Problem with file upload`), 500);
+    }
+
+    await Image.create({
+      title: req.body.title,
+      user: user._id,
+      image: file.name      
+      });
+
+    res.status(200).json({
+      success: true,
+      data: file.name
+    });
   });
 });
 
@@ -71,16 +145,19 @@ exports.addImage = asyncHandler(async (req, res, next) => {
 // @route   PUT /api/v1/users/:userId/images
 // @access  Private
 exports.updateImage = asyncHandler(async (req, res, next) => {
-  let image = await Image.findById(req.params.id)
+  let image = await Image.findById(req.params.id);
 
-  if(!image)    {
-      return next(new ErrorResponse(`No image with the id of ${req.params.id}`), 404)
+  if (!image) {
+    return next(
+      new ErrorResponse(`No image with the id of ${req.params.id}`),
+      404
+    );
   }
 
   image = await Image.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true
-  })
+    new: true,
+    runValidators: true,
+  });
 
   res.status(200).json({
     success: true,
@@ -92,17 +169,19 @@ exports.updateImage = asyncHandler(async (req, res, next) => {
 // @route   DELETE /api/v1/users/:userId/images
 // @access  Private
 exports.deleteImage = asyncHandler(async (req, res, next) => {
-  const image = await Image.findById(req.params.id)
+  const image = await Image.findById(req.params.id);
 
-  if(!image)    {
-      return next(new ErrorResponse(`No image with the id of ${req.params.id}`), 404)
+  if (!image) {
+    return next(
+      new ErrorResponse(`No image with the id of ${req.params.id}`),
+      404
+    );
   }
 
-  await image.remove()
+  await image.remove();
 
   res.status(200).json({
     success: true,
-    data: {}
+    data: {},
   });
 });
-
