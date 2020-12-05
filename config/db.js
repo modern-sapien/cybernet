@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-    const conn = mongoose.connect(process.env.MONGO_URI || "mongodb://localhost/cybernet", {
+    const conn = await mongoose.connect(process.env.MONGO_URI || "mongodb://localhost/cybernet", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
