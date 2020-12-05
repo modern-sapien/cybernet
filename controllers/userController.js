@@ -1,3 +1,4 @@
+const ErrorResponse = require("../utils/errorResponse")
 const User = require("../models/User");
 
 // @desc    Get all users
@@ -21,13 +22,13 @@ exports.getUser = async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
     if (!user) {
-      return res.status(400).json({ success: false });
+      return next(new ErrorResponse(`User not found with ID of ${req.params.id}`, 404));;
     }
 
     res.status(200).json({ success: true, data: user });
   } catch (error) {
     // res.status(400).json({ success: false });
-    next(error);
+    next(new ErrorResponse(`User not found with ID of ${req.params.id}`, 404));
   }
 };
 

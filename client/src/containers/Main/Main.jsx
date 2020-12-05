@@ -34,7 +34,7 @@ const Main = () => {
     });
 
     ThreeGallery(scene, camera, renderer);
-  
+
     ThreeImagePlane(scene, camera, renderer);
 
     let controls = new OrbitControls(camera, renderer.domElement);
