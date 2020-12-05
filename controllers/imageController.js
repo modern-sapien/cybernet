@@ -27,3 +27,22 @@ exports.getImages = asyncHandler(async (req, res, next) => {
     data: images,
   });
 });
+
+// @desc    Get single image by imae ID
+// @route   GET /api/v1/images/:id
+// @access  Public
+exports.getImage = asyncHandler(async (req, res, next) => {
+  const image = await Image.findById(req.params.id).populate({
+      path: "user",
+      select: "username photo"
+  });
+
+  if(!image)    {
+      return next(new ErrorResponse(`No image with the id of ${req.params.id}`), 404)
+  }
+
+  res.status(200).json({
+    success: true,
+    data: image,
+  });
+});
