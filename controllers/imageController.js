@@ -1,7 +1,7 @@
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 const Image = require("../models/Image");
-const e = require("express");
+const User = require("../models/User");
 
 // @desc    Get images
 // @route   GET /api/v1/images
@@ -28,7 +28,7 @@ exports.getImages = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc    Get single image by imae ID
+// @desc    Get single image by image ID
 // @route   GET /api/v1/images/:id
 // @access  Public
 exports.getImage = asyncHandler(async (req, res, next) => {
@@ -40,6 +40,26 @@ exports.getImage = asyncHandler(async (req, res, next) => {
   if(!image)    {
       return next(new ErrorResponse(`No image with the id of ${req.params.id}`), 404)
   }
+
+  res.status(200).json({
+    success: true,
+    data: image,
+  });
+});
+
+// @desc    Add image
+// @route   POST /api/v1/users/:userId/images
+// @access  Private
+exports.addImage = asyncHandler(async (req, res, next) => {
+    req.params.user = req.params.userId;
+
+    const user = await User.findById(req.params.userId)
+
+  if(!user)    {
+      return next(new ErrorResponse(`No user with the id of ${req.params.userid}`), 404)
+  }
+
+  const image = await Image.create(req.body)
 
   res.status(200).json({
     success: true,
