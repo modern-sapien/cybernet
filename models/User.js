@@ -53,6 +53,13 @@ UserSchema.pre("save", function(next)  {
   next();
 })
 
+// Cascase delete images when a user is deleted
+UserSchema.pre("remove", async function (next)  {
+  console.log(`images being removed from user ${this._id}`)
+  await this.model("Image").deleteMany({ user: this._id});
+  next();
+})
+
 // reverse populate with virtuals
 UserSchema.virtual("images", {
   ref: "Image",

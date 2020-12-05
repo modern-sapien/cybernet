@@ -102,11 +102,13 @@ exports.updateUser = asyncHandler(async (req, res, next) => {
 // @route   Delete /api/v1/users/:id
 // @access  Private
 exports.deleteUser = asyncHandler(async (req, res, next) => {
-  const user = await User.findByIdAndDelete(req.params.id);
+  const user = await User.findById(req.params.id);
 
   if (!user) {
     return res.status(400).json({ success: false });
   }
+
+  user.remove();
 
   res.status(200).json({ success: true, data: "removed user" });
 });
