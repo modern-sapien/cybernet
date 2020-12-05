@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -42,5 +43,11 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
+// Create user slug from name
+UserSchema.pre("save", function(next)  {
+  this.slug = slugify(this.username, { lower: true })
+  // console.log('Slugify ran', this.username)
+  next();
+})
 
 module.exports = mongoose.model("User", UserSchema)
