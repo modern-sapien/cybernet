@@ -4,16 +4,7 @@ const mongoose = require("mongoose");
 const asyncHandler = require("../middleware/async");
 const Image = require("../models/Image");
 const User = require("../models/User");
-// const multer = require("multer");
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "./uploads/");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.filename);
-//   },
-// });
-// const upload = multer({ dest: "uploads/" });
+
 
 // @desc    Get images
 // @route   GET /api/v1/images
