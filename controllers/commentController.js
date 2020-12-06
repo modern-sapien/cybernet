@@ -70,3 +70,44 @@ exports.addComment = asyncHandler(async (req, res, next) => {
     data: comment
   })
 });
+
+// @desc    Update comment
+// @route   Put /api/v1/comment/:id
+// @access  Private
+exports.updateComment = asyncHandler(async (req, res, next) => {
+
+  let comment = await Comment.findById(req.params.id)
+
+  if(!comment)  {
+    return next(new ErrorRespionse(`No review with the id of ${req.params.id}`, 404))
+  }
+
+  comment = await Comment.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    data: comment
+  })
+});
+
+// @desc    Delete comment
+// @route   Remove /api/v1/comment/:id
+// @access  Private
+exports.deleteComment = asyncHandler(async (req, res, next) => {
+
+  let comment = await Comment.findById(req.params.id)
+
+  if(!comment)  {
+    return next(new ErrorRespionse(`No comment with the id of ${req.params.id}`, 404))
+  }
+
+  await comment.remove()
+
+  res.status(200).json({
+    success: true,
+    data: {}
+  })
+});

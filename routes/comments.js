@@ -1,7 +1,7 @@
 const express = require("express");
 
 const {
-    getComments, getComment, addComment
+    getComments, getComment, addComment, updateComment, deleteComment
   } = require("../controllers/commentController");
   
   // to accept info from other routers
@@ -15,5 +15,5 @@ const {
     select: "title"
   }), getComments).post(addComment);
   
-  router.route("/:id").get(getComment)
+  router.route("/:id").get(getComment).put(updateComment).delete(deleteComment)
   module.exports = router;
