@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -58,6 +59,19 @@ UserSchema.pre("save", function(next)  {
   next();
 })
 
+// encrypt password using bcrypt
+UserSchema.pre("save", async function(next) {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+})
+
+// Sign JWT & return
+UserSchema.methods.getSignedJwtToken = function() {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRE
+  })
+}
+
 // Cascase delete images when a user is deleted
 UserSchema.pre("remove", async function (next)  {
   console.log(`images being removed from user ${this._id}`)
@@ -73,10 +87,6 @@ UserSchema.virtual("images", {
   justOne: false
 })
 
-// encrypt password using bcrypt
-UserSchema.pre("save", async function(next) {
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-})
+
 
 module.exports = mongoose.model("User", UserSchema)
