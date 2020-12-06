@@ -72,6 +72,11 @@ UserSchema.methods.getSignedJwtToken = function() {
   })
 }
 
+// Match user entered password to hashed password in database
+UserSchema.methods.matchPassword = async function(enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password)
+}
+
 // Cascase delete images when a user is deleted
 UserSchema.pre("remove", async function (next)  {
   console.log(`images being removed from user ${this._id}`)
