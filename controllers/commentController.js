@@ -3,6 +3,7 @@ const ErrorResponse = require("../utils/errorResponse");
 const Image = require("../models/Image");
 const User = require("../models/User");
 const Comment = require("../models/Comment");
+const { Error } = require("mongoose");
 
 // @desc    Get comments
 // @route   GET /api/v1/comments
@@ -42,6 +43,27 @@ exports.getComment = asyncHandler(async (req, res, next) => {
   if (!comment) {
     return next(new ErrorResponse(`No comment found with ${req.params.id}`), 404)
   }
+
+  res.status(200).json({
+    success: true,
+    data: comment
+  })
+});
+
+// @desc    Post comment
+// @route   Post /api/v1/comment/images/:imageId/comments
+// @access  Private
+exports.addComment = asyncHandler(async (req, res, next) => {
+  req.body.image = req.params.imageId;
+  // req.body.user = req.user.id;
+
+  const image = await Image.findById(req.params.imageId);
+
+  if(!image)  {
+    return next(new ErrorRespionse(`No image with the id of ${req.params.imageId}`, 404))
+  }
+
+  const comment = await Comment.create(req.body)
 
   res.status(200).json({
     success: true,

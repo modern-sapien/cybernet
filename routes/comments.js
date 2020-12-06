@@ -1,7 +1,7 @@
 const express = require("express");
 
 const {
-    getComments, getComment
+    getComments, getComment, addComment
   } = require("../controllers/commentController");
   
   // to accept info from other routers
@@ -13,7 +13,7 @@ const {
   router.route("/").get(advResults(Comment, {
     path: "image",
     select: "title"
-  }), getComments);
+  }), getComments).post(addComment);
   
   router.route("/:id").get(getComment)
   module.exports = router;
