@@ -18,6 +18,7 @@ connectDB();
 const users = require("./routes/users");
 const images = require("./routes/images");
 const comments = require("./routes/comments");
+const auth = require("./routes/auth");
 
 const PORT = process.env.PORT || 3001;
 
@@ -38,6 +39,7 @@ app.use(fileupload());
 app.use("/api/v1/users", users);
 app.use("/api/v1/images", images);
 app.use("/api/v1/comments", comments);
+app.use("/api/v1/auth", auth);
 
 app.use(errorHandler);
 

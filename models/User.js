@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
+const bcrypt = require("bcryptjs")
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -70,6 +71,12 @@ UserSchema.virtual("images", {
   localField: "_id",
   foreignField: "user",
   justOne: false
+})
+
+// encrypt password using bcrypt
+UserSchema.pre("save", async function(next) {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 })
 
 module.exports = mongoose.model("User", UserSchema)
