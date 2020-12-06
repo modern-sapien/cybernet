@@ -10,10 +10,6 @@ const ImageSchema = new mongoose.Schema({
         type: String,
         required: [true, 'please add an image']
     },
-    // imageURL: {
-    //     type: String,
-    //     required: [true, 'please add an image']
-    // },
     createdAt: {
         type: Date,
         default: Date.now

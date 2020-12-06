@@ -107,10 +107,10 @@ exports.addImage = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse(`Problem with file upload`), 500);
     }
 
-  const image =    await Image.create({
+  const image = await Image.create({
       title: req.body.title,
       user: user._id,
-      image: `${process.env.FILE_UPLOAD_PATH}/${file.name}`      
+      image: `${process.env.FILE_UPLOAD_PATH_NO_DOT}/${file.name}`      
       });
 
     res.status(200).json({
