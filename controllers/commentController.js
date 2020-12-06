@@ -18,6 +18,9 @@ exports.getComments = asyncHandler(async (req, res, next) => {
       data: comments,
     });
   } else {
+
+    const comments = await Comment.find()
+    
     res.status(200).json({
       success: true,
       count: comments.length,

@@ -11,24 +11,17 @@ const User = require("../models/User");
 // @route   GET /api/v1/users/:userId/images
 // @access  Public
 exports.getImages = asyncHandler(async (req, res, next) => {
-  let query;
-
   if (req.params.userId) {
-    query = Image.find({ user: req.params.userId });
+    const images = await Image.find({ user: req.params.userId });
+  
+    return res.status(200).json({
+      success: true,
+      count: images.length,
+      data: images
+    })
   } else {
-    query = Image.find().populate({
-      path: "user",
-      select: "username photo",
-    });
+    res.status(200).json(res.advResults)
   }
-
-  const images = await query;
-
-  res.status(200).json({
-    success: true,
-    count: images.length,
-    data: images,
-  });
 });
 
 // @desc    Get single image by image ID
