@@ -3,9 +3,10 @@ const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 const path = require("path");
 const morgan = require("morgan");
-const fileupload = require("express-fileupload")
+const fileupload = require("express-fileupload");
+const cookieParser = require("cookie-parser")
 const colors = require("colors");
-const errorHandler = require("./middleware/error")
+const errorHandler = require("./middleware/error");
 const connectDB = require("./config/db");
 
 // Load env vars
@@ -29,6 +30,7 @@ if(process.env.NODE_ENV === "development")  {
 }
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static("client/build"));
 app.use(express.static(path.join(__dirname, "/uploads")));
 app.use('/uploads', express.static("uploads"))
