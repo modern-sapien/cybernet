@@ -6,11 +6,14 @@ const Comment = require("../models/Comment");
 
 // @desc    Get comments
 // @route   GET /api/v1/comments
-// @route   GET /api/v1/users/:userId/comments
+// @route   GET /api/v1/images/:imageId/comments
 // @access  Public
 exports.getComments = asyncHandler(async (req, res, next) => {
   if (req.params.imageId) {
-    const comments = await Comment.find({ image: req.params.imageId });
+    const comments = await Comment.find({ image: req.params.imageId }).populate({
+      path: "image",
+      select: "title image"
+    });
 
     return res.status(200).json({
       success: true,
@@ -29,3 +32,19 @@ exports.getComments = asyncHandler(async (req, res, next) => {
   }
 });
 
+
+// @desc    Get comment
+// @route   GET /api/v1/comment/:id
+// @access  Private
+exports.getComment = asyncHandler(async (req, res, next) => {
+  const comment = await (await Comment.findById(req.params.id))
+  
+  if (!comment) {
+    return next(new ErrorResponse(`No comment found with ${req.params.id}`), 404)
+  }
+
+  res.status(200).json({
+    success: true,
+    data: comment
+  })
+});

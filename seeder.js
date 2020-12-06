@@ -9,6 +9,7 @@ dotenv.config({ path: "./config/config.env" });
 // load models
 const User = require("./models/User");
 const Image = require("./models/Image");
+const Comment = require("./models/Comment");
 
 // connect to DB
 mongoose.connect(process.env.MONGO_URI || "mongodb://localhost/cybernet", {
@@ -22,6 +23,9 @@ mongoose.connect(process.env.MONGO_URI || "mongodb://localhost/cybernet", {
 const users = JSON.parse(
   fs.readFileSync(`${__dirname}/_data/users.json`, "utf-8")
 );
+const comments = JSON.parse(
+  fs.readFileSync(`${__dirname}/_data/comments.json`, "utf-8")
+);
 const images = JSON.parse(
   fs.readFileSync(`${__dirname}/_data/images.json`, "utf-8")
 );
@@ -32,6 +36,7 @@ const importData = async () =>  {
     try{
         await User.create(users)
         await Image.create(images)
+        await Comment.create(comments)
 
         console.log(`Data imported...`.green.inverse)
         process.exit()
