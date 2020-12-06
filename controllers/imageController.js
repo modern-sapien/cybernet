@@ -65,7 +65,7 @@ exports.addImage = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Issue with uploading the file`), 404);
   }
 
-  const file = req.files.file;
+  const file = req.files.image;
 
   //make sure image is a photo
   if (!file.mimetype.startsWith("image")) {
@@ -80,8 +80,9 @@ exports.addImage = asyncHandler(async (req, res, next) => {
       400
     );
   }
-  console.log(req.files.file);
-  console.log(Date.now().toString())
+
+  // console.log(req.files.image);
+
   // create custom filename
   file.name = `${Date.now().toString()}${user._id}${path.parse(file.name).ext}`;
 

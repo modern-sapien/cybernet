@@ -16,10 +16,11 @@ dotenv.config({path: `./config/config.env`});
 connectDB();
 
 // routes
+const auth = require("./routes/auth");
 const users = require("./routes/users");
 const images = require("./routes/images");
 const comments = require("./routes/comments");
-const auth = require("./routes/auth");
+
 
 const PORT = process.env.PORT || 3001;
 
