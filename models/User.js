@@ -21,8 +21,12 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "please add a password"],
-    maxlength: [150, "email cannot be more than 150 characters"],
+    maxlength: [50, "email cannot be more than 150 characters"],
+    minlength: 7,
+    select: false
   },
+  resetPasswordToken: String,
+  resetPasswordExpire: Date,
   website: {
     type: String,
     required: false,
