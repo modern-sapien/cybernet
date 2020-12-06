@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { default: slugify } = require("slugify");
 
 const ImageSchema = new mongoose.Schema({
     title: {
@@ -6,6 +7,7 @@ const ImageSchema = new mongoose.Schema({
         trim: true,
         required: [true, "please add a title"]
     },
+    slug: String,
     image: {
         type: String,
         required: [true, 'please add an image']
@@ -20,5 +22,14 @@ const ImageSchema = new mongoose.Schema({
         required: true
     }
 })
+
+// Create slug from title
+ImageSchema.pre("save", function(next)  {
+    this.slug = slugify(this.title, {lower: true})
+
+    next();
+})
+
+
 
 module.exports = mongoose.model("Image", ImageSchema)

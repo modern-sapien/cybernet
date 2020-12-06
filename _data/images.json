@@ -1,47 +1,39 @@
 [
     {
-        "title": "New Image",
-        "image": "abababa",
-        "user": "5fcae83017f71d94c02c5cb4"
+        "_id": "5fcd111f1df766652429f2b0",
+        "title": "canales-bw",
+        "user": "5dcae83017f71d94c02c5664",
+        "image": "uploads/16072747835595dcae83017f71d94c02c5664.png",
+        "createdAt": "2020-12-06T17:13:03.564Z",
+        "slug": "canales-bw",
+        "__v": 0
     },
     {
-        "title": "New Image 2",
-        "image": "abababa",
-        "user": "5fcae83017f71d94c02c5cb4"
+        "_id": "5fcd11441df766652429f2b1",
+        "title": "you should totally hire me",
+        "user": "5dcae83017f71d94c02c5664",
+        "image": "uploads/16072748203005dcae83017f71d94c02c5664.png",
+        "createdAt": "2020-12-06T17:13:40.302Z",
+        "slug": "you-should-totally-hire-me",
+        "__v": 0
     },
     {
-        "title": "New Image 3",
-        "image": "abababa",
-        "user": "5fcae83017f71d94c02c5cb4"
+        "_id": "5fcd11681df766652429f2b2",
+        "title": "personal logo",
+        "user": "5dcae83017f71d94c02c5664",
+        "image": "uploads/16072748567285dcae83017f71d94c02c5664.png",
+        "createdAt": "2020-12-06T17:14:16.730Z",
+        "slug": "personal-logo",
+        "__v": 0
     },
     {
-        "title": "New Image 4",
-        "image": "abababa",
-        "user": "5fcae83017f71d94c02c5cb4"
-    },
-    {
-        "title": "Other Image 1",
-        "image": "abababa",
-        "user": "5dcae83017f71d94c02c5664"
-    },
-    {
-        "title": "Other Image 2",
-        "image": "abababa",
-        "user": "5dcae83017f71d94c02c5664"
-    },
-    {
-        "title": "Other Image 3",
-        "image": "abababa",
-        "user": "5dcae83017f71d94c02c5664"
-    },
-    {
-        "title": "Other Image 4",
-        "image": "abababa",
-        "user": "5dcae83017f71d94c02c5664"
-    },
-    {
-        "title": "Other Image 5",
-        "image": "abababa",
-        "user": "5dcae83017f71d94c02c5664"
+        "_id": "5fcd11781df766652429f2b3",
+        "title": "moodboard",
+        "user": "5dcae83017f71d94c02c5664",
+        "image": "uploads/16072748728815dcae83017f71d94c02c5664.png",
+        "createdAt": "2020-12-06T17:14:32.883Z",
+        "slug": "moodboard",
+        "__v": 0
     }
 ]
+
