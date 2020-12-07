@@ -2,7 +2,6 @@ const crypto = require("crypto");
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 const User = require("../models/User");
-const { Error } = require("mongoose");
 
 // @desc    Register a user
 // @route   POST /api/v1/auth/register
