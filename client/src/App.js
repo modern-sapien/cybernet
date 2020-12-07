@@ -1,19 +1,22 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios"
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // containers
 import Main from "./containers/Main/Main"
+import UserSearch from "./containers/UserSearch/UserSearch"
 
 // components
 import Header from "./components/Header/Header"
 import NavBarBtm from "./components/NavBarBtm/NavBarBtm"
+
 // three
 
 
 // context API
 
-
+//
 
 function App() {
 
@@ -49,9 +52,21 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Main />
+      <Router>
+        <Header />
+        <Main />
+        <Switch>
+          <Route  path="/search" component={UserSearch} />
+          <Route  path="/search/:id" component={UserSearch} />
+
+
+        </Switch>
       <NavBarBtm />
+    </Router>
+
+      
+      
+      
     </div>
   );
 }
