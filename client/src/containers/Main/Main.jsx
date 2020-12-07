@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import ThreeGallery from "./../../threeComponents/ThreeGallery/ThreeGallery"
 import ThreeImagePlane from "./../../threeComponents/ThreeImagePlane/ThreeImagePlane"
 
-
 const Main = () => {
+  
     useEffect(() => {
     dimensions()
     }, [])
@@ -13,7 +13,7 @@ const Main = () => {
     function dimensions() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-    100,
+    50,
     window.innerWidth / window.innerHeight,
     0.1,
     10000
@@ -33,15 +33,13 @@ const Main = () => {
     camera.updateProjectionMatrix();
     });
 
-    ThreeGallery(scene, camera, renderer);
-
     ThreeImagePlane(scene, camera, renderer);
 
     let controls = new OrbitControls(camera, renderer.domElement);
-    controls.maxDistance = 1000;
+    controls.maxDistance = 5000;
 
     // start position cam
-    camera.position.set(-5, 5, -200);
+    camera.position.set(-350, 5, 500);
     controls.update()
 
     function animate() {

@@ -32,8 +32,6 @@ function App() {
   const [ imagesState, setImagesState ] = useState();
   const [ usersState, setUsersState ] = useState();
 
-
-
   useEffect(() => {
     // get all images
     API.getImages().then((res) => {
