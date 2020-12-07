@@ -50,6 +50,8 @@ exports.getImage = asyncHandler(async (req, res, next) => {
 // @route   POST /api/v1/users/:userId/images
 // @access  Private
 exports.addImage = asyncHandler(async (req, res, next) => {
+  req.body.user = req.user.id
+  
   req.params.user = req.params.userId;
 
   const user = await User.findById(req.params.userId);
@@ -94,7 +96,7 @@ exports.addImage = asyncHandler(async (req, res, next) => {
 
   const image = await Image.create({
       title: req.body.title,
-      user: user._id,
+      user: req.body.user,
       image: `${process.env.FILE_UPLOAD_PATH_NO_DOT}/${file.name}`      
       });
 
