@@ -10,7 +10,7 @@ export default {
     },
 
     loginUser: function(userData) {
-        return axios.post(`/api/v1/auth/register`, userData)
+        return axios.post(`/api/v1/auth/login`, userData)
     },
 
     updateUser: function(userData) {

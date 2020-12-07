@@ -8,7 +8,9 @@ body {
   height: 100%;
 }
 
-
+.validate {
+  color: teal;
+}
 
 .header-background {
   font-weight: bolder;
@@ -223,7 +225,7 @@ body {
   color: whitesmoke;
   /* font-weight: bolder; */
   font-size: 1.15rem;
-  border: 4px solid black;
+  border: 4px solid whitesmoke;
   background: rgba(0, 0, 0, 0.95);
   position: fixed;
   top: 25%;
@@ -260,7 +262,7 @@ body {
   color: whitesmoke;
   /* font-weight: bolder; */
   font-size: 1.2rem;
-  border: 4px solid white;
+  border: 4px solid whitesmoke;
   background: rgba(0, 0, 0, 0.95);
   position: fixed;
   top: 25%;

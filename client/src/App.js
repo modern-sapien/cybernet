@@ -54,7 +54,8 @@ function App() {
 
         <Header />
         <Switch>
-          <Route  exact path="/" component={AuthLogin} />
+          <Route  exact path="/" component={Main}/>
+          <Route  exact path="/login" component={AuthLogin} />
           <Route  exact path="/newuser" component={AuthNewUser} />
           <Route  exact path="/user/:id" component={AuthUpdateUser} />
           

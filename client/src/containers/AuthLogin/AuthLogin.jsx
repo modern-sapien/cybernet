@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { Link } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import API from "../../utils/API";
 import Main from "./../../containers/Main/Main";
 
 const AuthLogin = () => {
+    const history = useHistory();
     const [returnUserObj, setReturnUserObj] = useState({
         email: "",
         password: ""
@@ -19,11 +20,13 @@ const AuthLogin = () => {
             email: returnUserObj.email.trim(),
             password: returnUserObj.password.trim()
         }).then((result) => {
-            if(!result.data.data){
-                console.log("there was an error in logging in")
-            }
+        console.log(result)
+        const tokenToStore = result.data.token;
 
-            console.log(result.data.data)
+        if(result.data.token)   {
+            localStorage.setItem("jwt", tokenToStore);
+        }
+        history.push("/");
         })
     }
     return (
@@ -32,13 +35,14 @@ const AuthLogin = () => {
         <div className="login-form-modal row">
           <form action="">
               Email
-              <input type="text"/>
+              <input id="email" onChange={handleInputChange} value={returnUserObj.email}  name="email"
+                type="email" className="validate" />
               Password
-              <input type="text"/>
-              <div className="col s12 m12 l12 form-btn" value="File Upload">
+              <input id="password" onChange={handleInputChange} name="password" value={returnUserObj.password} type="password" className="validate"/>
+              <div className="col s12 m12 l12 form-btn" value="login" onClick={handleFormSubmit}>
               Login</div>
               <Link to="/newuser"> 
-              <div className="col s12 m12 l12 form-btn" value="File Upload">
+              <div className="col s12 m12 l12 form-btn" value="new-user">
               New User</div>
               </Link>
   
