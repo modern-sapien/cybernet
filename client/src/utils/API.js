@@ -74,7 +74,7 @@ export default {
         return axios.get(`/api/v1/images/${commentId}`)
     },
     // Add comment to an image
-    addComment: function(imageId) {
+    addComment: function(userId) {
         return axios.post(`/api/v1/images/${userId}/comments`)
     },
 

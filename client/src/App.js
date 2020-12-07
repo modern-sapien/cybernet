@@ -1,10 +1,8 @@
-import { useState, useEffect, useContext } from "react";
-import axios from "axios"
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
-// containers
-
+// CONTAINERS
 import AuthLogin from "./containers/AuthLogin/AuthLogin"
 import AuthNewUser from "./containers/AuthNewUser/AuthNewUser"
 import AuthUpdateUser from "./containers/AuthUpdateUser/AuthUpdateUser"
@@ -17,50 +15,45 @@ import ImagePost from "./containers/ImagePost/ImagePost"
 import UserSearch from "./containers/UserSearch/UserSearch"
 import UserSearchObj from "./containers/UserSearchObj/UserSearchObj"
 
-// components
+// COMPONENTS
 import Header from "./components/Header/Header"
 import NavBarBtm from "./components/NavBarBtm/NavBarBtm"
 
-// three
+// UTILS
+import API from "./utils/API";
 
-// context API
+// CONTEXT
+import ImagesContext from "./context/ImagesContext";
+import UsersContext from "./context/UsersContext";
+
 
 
 function App() {
+  const [ imagesState, setImagesState ] = useState();
+  const [ usersState, setUsersState ] = useState();
+
+
 
   useEffect(() => {
-    console.log("make an API call")
-    axios
-      .get("/api/v1/users")
-      .then((response) => {
-        console.log(response.data.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    // get all images
+    API.getImages().then((res) => {
+      let imagesArray = res.data.data;
+      setImagesState(imagesArray)
+    })
 
-    axios
-      .get("/api/v1/users/5fcae83017f71d94c02c5cb4")
-      .then((response) => {
-        console.log(response.data.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-
-      axios
-      .get("/api/v1/images")
-      .then((response) => {
-        console.log(response.data.data)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+    // get all users
+    API.getUsers().then((res) =>  {
+      let usersArray = res.data.data;
+      setUsersState(usersArray)
+    })
+  }, []);
 
   return (
     <div className="App">
       <Router>
+        <ImagesContext.Provider value={{ imagesState, setImagesState}}>
+        <UsersContext.Provider value={{ usersState, setUsersState}}>
+
         <Header />
         <Switch>
           <Route  exact path="/" component={AuthLogin} />
@@ -76,11 +69,11 @@ function App() {
 
         </Switch>
       <NavBarBtm />
-    </Router>
 
-      
-      
-      
+      </UsersContext.Provider>
+      </ImagesContext.Provider>
+
+    </Router>
     </div>
   );
 }
