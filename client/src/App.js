@@ -4,8 +4,18 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // containers
+
+import AuthLogin from "./containers/AuthLogin/AuthLogin"
+import AuthNewUser from "./containers/AuthNewUser/AuthNewUser"
+import AuthUpdateUser from "./containers/AuthUpdateUser/AuthUpdateUser"
+
 import Main from "./containers/Main/Main"
+import ImageSearch from "./containers/ImageSearch/ImageSearch"
+import ImageSearchObj from "./containers/ImageSearchObj/ImageSearchObj"
+import ImagePost from "./containers/ImagePost/ImagePost"
+
 import UserSearch from "./containers/UserSearch/UserSearch"
+import UserSearchObj from "./containers/UserSearchObj/UserSearchObj"
 
 // components
 import Header from "./components/Header/Header"
@@ -13,10 +23,8 @@ import NavBarBtm from "./components/NavBarBtm/NavBarBtm"
 
 // three
 
-
 // context API
 
-//
 
 function App() {
 
@@ -54,11 +62,17 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Main />
         <Switch>
-          <Route  path="/search" component={UserSearch} />
-          <Route  path="/search/:id" component={UserSearch} />
+          <Route  exact path="/" component={AuthLogin} />
+          <Route  exact path="/newUser" component={AuthNewUser} />
+          <Route  exact path="/user/:id" component={AuthUpdateUser} />
+          
+          <Route  exact path="/images" component={ImageSearch} />
+          <Route  exact path="/images/post" component={ImagePost} />
+          <Route  exact path="/images/:id" component={ImageSearchObj} />
 
+          <Route exact path="/search" component={UserSearch} />
+          <Route exact path="/search/:id" component={UserSearchObj} />
 
         </Switch>
       <NavBarBtm />
