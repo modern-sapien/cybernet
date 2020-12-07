@@ -2,7 +2,8 @@ const UserFormModal = () => {
   return (
     <>
       <div className="user-form-modal row">
-
+      <div className="col s11 m11 l11 nomargin-nopadding"></div>
+      <div className="col s1 m1 l1">X</div>
         <form action="">
           Username
           <input type="text" />
