@@ -14,7 +14,7 @@ const GalleryModal = () => {
             <GalleryObj image={image}/>
             <div className="col s1 m1 l1"></div>
         </div>
-        <div className="gallery-modal-background"></div>
+
         </>
     );
 };

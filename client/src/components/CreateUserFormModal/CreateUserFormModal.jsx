@@ -3,26 +3,8 @@ const CreateUserFormModal = () => {
     return (
         <>
         <div className="user-form-modal row">
-          <div className="col s11 m11 l11"></div>
-          <div className="col s1 m1 l1">X</div>
-          {/* <div className="row"> */}
-          <div className="col s5 m5 l5">
-          <img src="" alt=""/>
-              image</div>
-          <div className="col s7 m7 l7">
-            <div className="row">
-              <div className="col s6 m6 l6">images</div>
-              <div className="col s6 m6 l6">scripts</div>
-              <div className="col s6 m6 l6">following</div>
-              <div className="col s6 m6 l6">visitors</div>
-            </div>
-          </div>
-  
-          {/* </div> */}
           <form action="">
-            Human Name
-            <input type="text" />
-            Cyber Name
+            Username
             <input type="text" />
             Email
             <input type="email" />
@@ -36,7 +18,6 @@ const CreateUserFormModal = () => {
             </div>
           </form>
         </div>
-        <div className="user-form-modal-background"></div>
       </>
     );
 };

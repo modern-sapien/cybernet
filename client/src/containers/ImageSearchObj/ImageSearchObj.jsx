@@ -5,8 +5,9 @@ import Main from "./../../containers/Main/Main"
 const ImageSearchObj = () => {
     return (
         <>
-        <GalleryObj />
         <Main />
+        <GalleryObj />
+        
         </>
     );
 };

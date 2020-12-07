@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom"
+
 const LoginFormModal = () => {
   return (
     <>
-      <div className="login-modal row">
-        <div className="col s11 m11 l11 nomargin-nopadding"></div>
-        <div className="col s1 m1 l1">X</div>
+      <div className="login-form-modal row">
         <form action="">
             Email
             <input type="text"/>
@@ -11,11 +11,14 @@ const LoginFormModal = () => {
             <input type="text"/>
             <div className="col s12 m12 l12 form-btn" value="File Upload">
             Login</div>
+            <Link to="/newuser"> 
             <div className="col s12 m12 l12 form-btn" value="File Upload">
             New User</div>
+            </Link>
+
         </form>
       </div>
-      <div className="login-modal-background"></div>
+      <div className="login-form-modal-background"></div>
     </>
   );
 };

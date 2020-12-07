@@ -5,8 +5,9 @@ import Main from "./../../containers/Main/Main"
 const AuthNewUser = () => {
     return (
         <>
-        <CreateUserFormModal />
         <Main />
+        <CreateUserFormModal />
+        
         </>
     );
 };

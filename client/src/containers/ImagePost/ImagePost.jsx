@@ -6,8 +6,9 @@ import Main from "./../../containers/Main/Main"
 const ImagePost = () => {
     return (
         <>
-        <ImgUploadModal />
         <Main />
+        <ImgUploadModal />
+        
         </>
     );
 };
