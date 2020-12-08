@@ -12,7 +12,12 @@ const clickMe = () => {
     console.log("i've been clicked")
 }
 
-const icons = [
+
+
+
+
+const NavBarBtm = () => {
+    const icons = [
         {id: 1,
         name: "search",
         url: "/search",
@@ -28,17 +33,8 @@ const icons = [
         url: `/images`,
         img: gallery_img,
         clickMe: clickMe},
-        {id: 4,
-        name: "upload",
-        url: `/images/post`,
-        img: upload_img,
-        clickMe: clickMe}
 ]
 
-
-
-
-const NavBarBtm = () => {
     const history = useHistory();
     const [authUser, setAuthUser] = useState()
 
@@ -53,8 +49,17 @@ const NavBarBtm = () => {
         console.log(err)
         );
         }
+    
+    const postImageClick = () => {
+        getAuthUser();
+        if (authUser !== undefined) {
+            history.push(`/user/${authUser}/images`)
+        } else {
+            history.push("/")
+        }
+    }
 
-    const clickMe2 = () => {
+    const accountClick = () => {
         getAuthUser();
         if (authUser !== undefined) {
             history.push(`/user/${authUser}`)
@@ -69,7 +74,10 @@ const NavBarBtm = () => {
         <div className="col s1 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />
 
-        <div className="col s2 bottom-nav-content" onClick={clickMe2}>
+        <div className="col s2 bottom-nav-content" onClick={postImageClick}>
+        <img src={upload_img} alt="upload" /></div> 
+
+        <div className="col s2 bottom-nav-content" onClick={accountClick}>
         <img src={account_img} alt="account" /></div> 
       
 

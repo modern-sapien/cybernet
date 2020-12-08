@@ -58,6 +58,7 @@ function App() {
           <Route  exact path="/login" component={AuthLogin} />
           <Route  exact path="/newuser" component={AuthNewUser} />
           <Route  exact path="/user/:id" component={AuthUpdateUser} />
+          <Route  exact path="/user/:id/images" component={ImagePost} />
           
           <Route  exact path="/images" component={Main} />
           <Route  exact path="/images/post" component={ImagePost} />
