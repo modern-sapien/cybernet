@@ -25,10 +25,11 @@ router.use("/:imageId/comments", commentRouter);
 router
   .route("/")
   .get(
-    advResults(Image, {
-      path: "user",
-      select: "username photo",
-    }),
+    // advResults(
+    //   Image, {
+    //   path: "user",
+    //   select: "username photo",
+    // }),
     getImages
   )
   .post( protect, addImage );

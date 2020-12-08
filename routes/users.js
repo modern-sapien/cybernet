@@ -20,7 +20,9 @@ const router = express.Router();
 // Re-route into other resource routers
 router.use("/:userId/images", imageRouter);
 
-router.route("/").get(advResults(User, "images"), getUsers).post(createUser);
+router.route("/").get(
+  // advResults(User, "images"), 
+  getUsers).post(createUser);
 
 router
   .route("/:id")

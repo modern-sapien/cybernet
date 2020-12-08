@@ -20,7 +20,11 @@ exports.getImages = asyncHandler(async (req, res, next) => {
       data: images
     })
   } else {
-    res.status(200).json(res.advResults)
+    const images = await Image.find()
+    res.status(200).json(
+      {success: true,
+      count: images.length,
+      data: images})
   }
 });
 
