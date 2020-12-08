@@ -12,10 +12,6 @@ const clickMe = () => {
     console.log("i've been clicked")
 }
 
-
-
-
-
 const NavBarBtm = () => {
     const icons = [
         {id: 1,

@@ -19,8 +19,6 @@ const AuthUpdateUser = () => {
 
   function getAuthUser() {
       API.authUser().then((res) =>   {
-        // setUpdateUserObj(res.data.data._id)
-        // console.log(res.data.data)
         setUpdateUserObj({
           _id: res.data.data._id,
           username: res.data.data.username,

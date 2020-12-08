@@ -55,8 +55,8 @@ export default {
         return axios.get(`/api/v1/users/${userId}/images`)
     },
 
-    addImage: function(userId) {
-        return axios.post(`/api/v1/users/${userId}/images`)
+    addImage: function(userId, userData) {
+        return axios.post(`/api/v1/users/${userId}/images`, userData)
     },
 
     updateImage: function(imageId) {
