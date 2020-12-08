@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom"
+import API from "./../../utils/API";
 import NavBarIcons from "./../NavBarIcons/NavBarIcons"
 import account_img from "./assets/account.png"
 import gallery_img from "./assets/gallery.png"
@@ -31,20 +32,40 @@ const icons = [
         name: "upload",
         url: `/images/post`,
         img: upload_img,
-        clickMe: clickMe},
-        {id: 5,
-        name: "account",
-        url: `/user/1`,
-        img: account_img,
-        clickMe: clickMe},
+        clickMe: clickMe}
 ]
 
+
+
+
 const NavBarBtm = () => {
+    const [authUser, setAuthUser] = useState()
+
+    useEffect(() => {
+        getAuthUser()
+    }, [])
+
+    function getAuthUser() {
+        API.authUser().then((res) =>   {
+        setAuthUser(res.data.data._id)
+        }).catch((err) => console.log(err));
+        }
+
+    const clickMe2 = () => {
+        console.log("i've been clicked")
+        getAuthUser()
+    }
     return (
         <>
         <div className="bottom-background row">
         <div className="col s1 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />
+
+        <Link to={`user/${authUser}`}>
+        <div className="col s2 bottom-nav-content" onClick={clickMe2} >
+        <img src={account_img} alt="account"/></div> 
+        </Link>
+
         <div className="col s1 bottom-nav-content"></div> 
         </div>
 

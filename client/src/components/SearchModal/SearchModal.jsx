@@ -1,5 +1,5 @@
 import SearchObj from "./../SearchObj/SearchObj"
-import API from "./../../utils/API";
+
 
 const SearchModal = () => {
     return (
