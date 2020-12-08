@@ -5,10 +5,11 @@ const Header = () => {
     return (
         <>
         <Link to="/">
-        <div className="header-background">InstaVram</div>
+        <div className="row header-background">
+        <div className="header-background col s2 m2 l2">InstaVram</div>
+        </div>
         </Link>
         
-        {/* <div className="header-nav"> </div>  */}
         </>
     );
 };

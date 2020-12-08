@@ -19,8 +19,8 @@ body {
   color: yellow;
   height: 50px;
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 1%;
+  width: fit-content;
   margin-bottom: 10px;
   padding-top: 5px;
   padding-left: 20px;

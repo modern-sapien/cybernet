@@ -14,19 +14,21 @@ const AuthUpdateUser = () => {
   });
 
   useEffect(() => {
-    getAuthUser()
+    getAuthUser();
     }, [])
 
   function getAuthUser() {
       API.authUser().then((res) =>   {
         // setUpdateUserObj(res.data.data._id)
-        console.log(res.data.data)
+        // console.log(res.data.data)
         setUpdateUserObj({
           _id: res.data.data._id,
           username: res.data.data.username,
           email: res.data.data.email
         })
-      }).catch((err) => console.log(err));
+      }).catch((err) => (
+        console.log(err)
+      ));
       }
 
   function updateAuthUser() {
@@ -34,7 +36,7 @@ const AuthUpdateUser = () => {
       username: updateUserObj.username,
       email: updateUserObj.email
     }).then((res) => {
-      console.log("hello")
+      console.log(res)
     })
   }
 
@@ -65,6 +67,9 @@ const AuthUpdateUser = () => {
 
           <div className="col s12 m12 l12 form-btn" value="update" onClick={updateAuthUser}>
             Update Account
+          </div>
+          <div className="col s12 m12 l12 form-btn" value="updatePassword" >
+            Update Password
           </div>
           <div className="col s12 m12 l12 form-btn" value="delete" onClick={deleteAuthUser}>
             Delete Account
