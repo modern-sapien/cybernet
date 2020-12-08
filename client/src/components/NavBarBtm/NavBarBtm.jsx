@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from "react-router-dom"
-
 import NavBarIcons from "./../NavBarIcons/NavBarIcons"
 import account_img from "./assets/account.png"
 import gallery_img from "./assets/gallery.png"
@@ -15,7 +14,7 @@ const clickMe = () => {
 const icons = [
         {id: 1,
         name: "search",
-        url: "/",
+        url: "/search",
         img: search_img,
         clickMe: clickMe},
         {id: 2,
@@ -25,7 +24,7 @@ const icons = [
         clickMe: clickMe},
         {id: 3,
         name: "gallery",
-        url: `images`,
+        url: `/images`,
         img: gallery_img,
         clickMe: clickMe},
         {id: 4,

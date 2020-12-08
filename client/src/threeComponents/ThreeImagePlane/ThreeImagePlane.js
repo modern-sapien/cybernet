@@ -6,7 +6,7 @@ import API from "./../../utils/API";
 const ThreeImagePlane = (scene, camera, renderer, props) => {  
     let imagesArray = [];
 
-    if (props) {
+    if (props.props) {
     console.log(props.props)
     API.getImageByUser(props.props).then((res) =>  {
     imagesArray = res.data.data;
