@@ -4,7 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import ThreeGallery from "./../../threeComponents/ThreeGallery/ThreeGallery"
 import ThreeImagePlane from "./../../threeComponents/ThreeImagePlane/ThreeImagePlane"
 
-const Main = () => {
+const Main = (props) => {
   
     useEffect(() => {
     dimensions()
@@ -32,8 +32,12 @@ const Main = () => {
     // every time an adjustment is made on the camera this must be called
     camera.updateProjectionMatrix();
     });
-
-    ThreeImagePlane(scene, camera, renderer);
+    if (props)  {
+      ThreeImagePlane(scene, camera, renderer, props);
+    } else {
+      ThreeImagePlane(scene, camera, renderer);
+    }
+    
 
     let controls = new OrbitControls(camera, renderer.domElement);
     controls.maxDistance = 5000;
