@@ -17,6 +17,10 @@ export default {
         return axios.put(`/api/v1/auth/updateDetails`, userData)
     },
 
+    authUser: function() {
+        return axios.get("/api/v1/auth/me")
+    },
+
     updatePassword: function(userData) {
         return axios.put(`/api/v1/auth/updatePassword`, userData)
     },
