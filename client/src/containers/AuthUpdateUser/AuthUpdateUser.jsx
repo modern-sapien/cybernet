@@ -5,24 +5,56 @@ import API from "../../utils/API";
 
 
 const AuthUpdateUser = () => {
-    
+  const history = useHistory();
+  const [updateUserObj, setUpdateUserObj] = useState({
+    _id: "",
+    username: "",
+    email: "",
+    password: ""
+  });
+
+  useEffect(() => {
+    getAuthUser()
+    }, [])
+
+  function getAuthUser() {
+      API.authUser().then((res) =>   {
+        // setUpdateUserObj(res.data.data._id)
+        console.log(res.data.data)
+        setUpdateUserObj({
+          _id: res.data.data._id,
+          username: res.data.data.username,
+          email: res.data.data.email
+        })
+      }).catch((err) => console.log(err));
+      }
+
+    function handleInputChange(event) {
+      const { name, value } = event.target;
+      setUpdateUserObj({ ...updateUserObj, [name]: value });
+    }
+
+    function goBack(event){
+      history.goBack()
+   }
 
     return (
     <>
       <div className="user-form-modal row">
-      <div className="col s11 m11 l11 nomargin-nopadding"></div>
-      <div className="col s1 m1 l1">X</div>
         <form action="">
           Username
-          <input type="text" />
+          <input id="username" value={updateUserObj.username} type="text" className="validate" name="username" onChange={handleInputChange}/>
           Email
-          <input type="email" />
-          Password
+          {/* <input  id="email"  value={updateUserObj.email} type="email" className="validate" name="email" onChange={handleInputChange}/>
+          Password */}
           <input type="password" />
           <div className="col s12 m12 l12 form-btn" value="File Upload">
             Update Account
           </div>
           <div className="col s12 m12 l12 form-btn" value="File Upload">
+            Delete Account
+          </div>
+          <div className="col s12 m12 l12 form-btn" value="cancel" onClick={goBack}>
             Cancel
           </div>
         </form>
