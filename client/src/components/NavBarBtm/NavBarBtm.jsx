@@ -61,7 +61,7 @@ const NavBarBtm = () => {
         <div className="col s1 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />
 
-        <Link to={`user/${authUser}`}>
+        <Link to={`/user/${authUser}`}>
         <div className="col s2 bottom-nav-content" onClick={clickMe2} >
         <img src={account_img} alt="account"/></div> 
         </Link>

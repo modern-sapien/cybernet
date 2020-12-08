@@ -25,9 +25,9 @@ export default {
         return axios.put(`/api/v1/auth/updatePassword`, userData)
     },
 
-    // deleteUser: function(userId) {
-    //     return axios.put(`/api/v1/auth/updatePassword`, userData)
-    // }
+    deleteUser: function(userId) {
+        return axios.delete(`/api/v1/users/${userId}`)
+    },
 
     // ===================
     // Routes for Users

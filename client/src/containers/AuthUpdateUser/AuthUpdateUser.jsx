@@ -28,12 +28,20 @@ const AuthUpdateUser = () => {
         })
       }).catch((err) => console.log(err));
       }
+
   function updateAuthUser() {
     API.updateUser({
       username: updateUserObj.username,
       email: updateUserObj.email
     }).then((res) => {
       console.log("hello")
+    })
+  }
+
+  function deleteAuthUser() {
+    API.deleteUser(updateUserObj._id).then((res) => {
+      console.log(res)
+      history.go("/")
     })
   }
 
@@ -54,12 +62,11 @@ const AuthUpdateUser = () => {
           <input id="username" value={updateUserObj.username} type="text" className="validate" name="username" onChange={handleInputChange}/>
           Email
           <input  id="email"  value={updateUserObj.email} type="email" className="validate" name="email" onChange={handleInputChange}/>
-          {/* Password
-          <input type="password" /> */}
+
           <div className="col s12 m12 l12 form-btn" value="update" onClick={updateAuthUser}>
             Update Account
           </div>
-          <div className="col s12 m12 l12 form-btn" value="File Upload">
+          <div className="col s12 m12 l12 form-btn" value="delete" onClick={deleteAuthUser}>
             Delete Account
           </div>
           <div className="col s12 m12 l12 form-btn" value="cancel" onClick={goBack}>
