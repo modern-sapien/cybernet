@@ -19,7 +19,7 @@ const Main = (props) => {
     10000
     );
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setClearColor("#000000");
+    renderer.setClearColor("whitesmoke");
     renderer.setSize(window.innerWidth, window.innerHeight);
     // document.body.appendChild( renderer.domElement );
     const container = document.getElementById("myCanvas"); 
@@ -38,6 +38,13 @@ const Main = (props) => {
       ThreeImagePlane(scene, camera, renderer);
     }
     
+    
+      const light = new THREE.DirectionalLight(0xFFFFFF, .25);
+      light.position.set(.9,.5,0)
+      scene.add(light)
+
+
+     
 
     let controls = new OrbitControls(camera, renderer.domElement);
     controls.maxDistance = 5000;
