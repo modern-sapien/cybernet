@@ -36,7 +36,6 @@ const AuthUpdateUser = () => {
       email: updateUserObj.email,
     }).then((res) => {
       console.log(res);
-      window.location.reload()
     });
   }
 
@@ -131,7 +130,6 @@ const AuthUpdateUser = () => {
             <div
               className="col s12 m12 l12 form-btn"
               value="update"
-              onClick={updateAuthUser}
             >
               view gallery
             </div>
