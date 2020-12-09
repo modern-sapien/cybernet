@@ -36,6 +36,7 @@ const AuthUpdateUser = () => {
       email: updateUserObj.email,
     }).then((res) => {
       console.log(res);
+      window.location.reload()
     });
   }
 

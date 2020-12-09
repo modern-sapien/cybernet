@@ -33,7 +33,7 @@ body {
   text-shadow: 1px 1px 5px yellow;
   height: 24px;
   width: auto;
-  padding-top: 1%;
+  padding-top: 2%;
   position: fixed;
   bottom: 10px;
   width: 100%;
@@ -44,7 +44,7 @@ body {
 .bottom-nav {
   opacity: .85;
   background: black;
-  height: 60px;
+  height: 50px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -53,7 +53,6 @@ body {
 
 .bottom-nav-content {
   align-content: center;
-  
   width: 100%;
 }
 
@@ -168,7 +167,7 @@ body {
   background: black;
   opacity: .85;
   position: fixed;
-  top: 20%;
+  top: 10%;
   right: 5%;
   min-width: 250px;
   width: 30%;
