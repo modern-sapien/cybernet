@@ -8,6 +8,7 @@ import AuthNewUser from "./containers/AuthNewUser/AuthNewUser"
 import AuthUpdateUser from "./containers/AuthUpdateUser/AuthUpdateUser"
 
 import Main from "./containers/Main/Main"
+import SoloMain from "./containers/SoloMain/SoloMain"
 import ImageSearch from "./containers/ImageSearch/ImageSearch"
 import ImageSearchObj from "./containers/ImageSearchObj/ImageSearchObj"
 import ImagePost from "./containers/ImagePost/ImagePost"
@@ -59,6 +60,7 @@ function App() {
           <Route  exact path="/newuser" component={AuthNewUser} />
           <Route  exact path="/user/:id" component={AuthUpdateUser} />
           <Route  exact path="/user/:id/images" component={ImagePost} />
+          <Route  exact path="/user/:id/gallery" component={SoloMain} />
           
           <Route  exact path="/images" component={Main} />
           <Route  exact path="/images/post" component={ImagePost} />

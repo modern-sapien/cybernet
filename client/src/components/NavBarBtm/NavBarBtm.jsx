@@ -20,11 +20,6 @@ const NavBarBtm = () => {
         img: search_img,
         clickMe: clickMe},
         {id: 2,
-        name: "comments",
-        url: `/comments`,
-        img: messages_img,
-        clickMe: clickMe},
-        {id: 3,
         name: "gallery",
         url: `/images`,
         img: gallery_img,
@@ -67,7 +62,7 @@ const NavBarBtm = () => {
     return (
         <>
         <div className="bottom-background row">
-        <div className="col s1 bottom-nav-content"></div>
+        <div className="col s3 bottom-nav-content"></div>
         <NavBarIcons icons={icons} />
 
         <div className="col s2 bottom-nav-content" onClick={postImageClick}>

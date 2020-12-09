@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import Main from "./../../containers/Main/Main";
 import API from "./../../utils/API";
@@ -87,21 +86,13 @@ const ImagePost = () => {
               onChange={handleInputChange}
               onChange={fileSelectedHandler}
             />
-
-            <div
-              className="col s12 m12 l12 form-btn"
-              value="Image Upload"
-              onClick={postImage}
-            >
-              File Upload
-            </div>
-            <button className="col s12 m12 l12 form-btn" onClick={fileUploadHandler}>File Upload For Real</button>
+            <button className="col s12 m12 l12 form-btn white-text" onClick={fileUploadHandler}>File Upload</button>
           </form>
         </div>
       </div>
 
       <div className="img-upload-modal-background"></div>
-      <Main />
+      <Main props={id}/>
     </>
   );
 };

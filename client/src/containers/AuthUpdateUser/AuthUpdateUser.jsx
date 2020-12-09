@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Main from "./../../containers/Main/Main"
-import { useHistory, Link } from "react-router-dom"
+import { useHistory, useParams, Link } from "react-router-dom"
 import API from "../../utils/API";
 
 
 const AuthUpdateUser = () => {
   const history = useHistory();
+  const { id } = useParams();
   const [updateUserObj, setUpdateUserObj] = useState({
     _id: "",
     username: "",
@@ -72,13 +73,22 @@ const AuthUpdateUser = () => {
           <div className="col s12 m12 l12 form-btn" value="delete" onClick={deleteAuthUser}>
             Delete Account
           </div>
+
+          <Link to={`/user/${id}/gallery`}> 
+          <div className="col s12 m12 l12 form-btn" value="update" onClick={updateAuthUser}>
+            View Gallery
+          </div>
+          </Link>
+          
+
+
           <div className="col s12 m12 l12 form-btn" value="cancel" onClick={goBack}>
             Cancel
           </div>
         </form>
       </div>
       <div className="user-form-modal-background"></div>
-        <Main />
+        <Main props={id}/>
         
             
         </>
