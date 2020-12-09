@@ -3,9 +3,7 @@ import API from "./../../utils/API";
 
 const ThreeSoloImage = (scene, camera, renderer, props) => {
   if (props) {
-    console.log(props.props);
     API.getImage(props.props).then((res) => {
-      console.log(res.data.data);
       let image = res.data.data;
 
       const texture = new THREE.TextureLoader().load(`/${image.image}`);

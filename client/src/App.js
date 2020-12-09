@@ -11,10 +11,12 @@ import Main from "./containers/Main/Main"
 import SoloMain from "./containers/SoloMain/SoloMain"
 import ImageSearch from "./containers/ImageSearch/ImageSearch"
 import ImageSearchObj from "./containers/ImageSearchObj/ImageSearchObj"
+import UserImageUpDel from "./containers/UserImageUpDel/UserImageUpDel"
 import ImagePost from "./containers/ImagePost/ImagePost"
 
 import UserSearch from "./containers/UserSearch/UserSearch"
 import UserGallery from "./containers/UserGallery/UserGallery"
+import UserUpdateGallery from "./containers/UserUpdateGallery/UserUpdateGallery"
 
 // COMPONENTS
 import Header from "./components/Header/Header"
@@ -58,8 +60,8 @@ function App() {
           <Route  exact path="/newuser" component={AuthNewUser} />
           <Route  exact path="/user/:id" component={AuthUpdateUser} />
           <Route  exact path="/user/:id/images" component={ImagePost} />
-          <Route  exact path="/user/:id/gallery" component={UserGallery} />
-          <Route  exact path="/userimage/:id/" component={ImageSearchObj} />
+          <Route  exact path="/user/:id/gallery" component={UserUpdateGallery} />
+          <Route  exact path="/userimage/:id/" component={UserImageUpDel} />
           
           <Route  exact path="/images" component={ImageSearch} />
           <Route  exact path="/images/post" component={ImagePost} />
