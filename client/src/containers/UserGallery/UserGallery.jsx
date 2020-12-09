@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useParams } from "react-router-dom";
-import ImgSearchObj from "./../../components/ImgSearchObj/ImgSearchObj"
+import ImgSearchUserObj from "./../../components/ImgSearchUserObj/ImgSearchUserObj"
 import Main from "../Main/Main"
 import API from "./../../utils/API"
 
@@ -68,7 +68,7 @@ const UserGallery = () => {
           />
         </form>
         {searchedImages.map((image) => (
-          <ImgSearchObj
+          <ImgSearchUserObj
             key={image._id}
             title={image.title.toLowerCase()}
             id={image._id}
