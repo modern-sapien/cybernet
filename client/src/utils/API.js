@@ -59,8 +59,8 @@ export default {
         return axios.post(`/api/v1/users/${userId}/images`, userData)
     },
 
-    updateImage: function(imageId) {
-        return axios.put(`/api/vi/images/${imageId}`)
+    updateImage: function(imageId, imageData) {
+        return axios.put(`/api/vi/images/${imageId}`, imageData)
     },
 
     deleteImage: function(imageId) {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SoloMain from "./../../containers/SoloMain/SoloMain";
 import { useHistory, useParams } from "react-router-dom";
 import API from "../../utils/API";
+import axios from "axios";
 
 const ImageSearchObj = () => {
   const history = useHistory();
@@ -34,13 +35,18 @@ const ImageSearchObj = () => {
   }
 
   function updateUserImage() {
-    API.updateImage(id).then((res) => {
-      console.log(res);
-    });
+    axios
+      .put(`/api/v1/images/${id}`, updateImgObj)
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function deleteUserImage() {
-    API.deleteImage(id).then((res) => {
+    API.deleteImage(id, {
+      title: updateImgObj.title,
+    }).then((res) => {
       console.log(res);
     });
   }
@@ -68,7 +74,6 @@ const ImageSearchObj = () => {
             onChange={handleInputChange}
           />
           {updateImgObj.created}
-
           <div
             className="col s12 m12 l12 form-btn"
             value="update"
