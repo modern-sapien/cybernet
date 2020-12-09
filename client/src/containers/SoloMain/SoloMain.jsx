@@ -1,34 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import Main from "./../../containers/Main/Main"
-import { useHistory, useParams, Link } from "react-router-dom"
-import API from "../../utils/API";
-const SoloMain = () => {
-    const history = useHistory();
-    const { id } = useParams();
-    const [updateUserObj, setUpdateUserObj] = useState({
-      _id: "",
-      username: "",
-      email: "",
-      password: ""
-    });
+import React, {useEffect, useContext, useState} from 'react';
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import ThreeGallery from "./../../threeComponents/ThreeGallery/ThreeGallery"
+import ThreeSoloImage from "./../../threeComponents/ThreeSoloImage/ThreeSoloImage"
+
+const SoloMain = (props) => {
   
     useEffect(() => {
-      getAuthUser();
-      }, [])
-  
-    function getAuthUser() {
-        API.authUser().then((res) =>   {
-          setUpdateUserObj({
-            _id: res.data.data._id,
-            username: res.data.data.username,
-            email: res.data.data.email
-          })
-        }).catch((err) => (
-          console.log(err)
-        ));
-        }
+    dimensions()
+    }, [])
+
+    function dimensions() {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+    50,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    10000
+    );
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setClearColor("whitesmoke");
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    // document.body.appendChild( renderer.domElement );
+    const container = document.getElementById("myCanvas"); 
+    container.appendChild(renderer.domElement);
+   
+    // this is updating the of the scene ever time
+    window.addEventListener("resize", () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    // every time an adjustment is made on the camera this must be called
+    camera.updateProjectionMatrix();
+    });
+    if (props)  {
+      ThreeSoloImage(scene, camera, renderer, props);
+    }
+        
+      const light = new THREE.DirectionalLight(0xFFFFFF, .25);
+      light.position.set(.9,.5,0)
+      scene.add(light)
+
+    let controls = new OrbitControls(camera, renderer.domElement);
+    controls.maxDistance = 5000;
+
+    // start position cam
+    camera.position.set(-350, 5, 500);
+    controls.update()
+
+    function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+    }
+    animate();
+  }  
     return (
-        <Main props={id}/>
+      <div id="myCanvas"></div>
     );
 };
 

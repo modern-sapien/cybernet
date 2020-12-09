@@ -1,4 +1,3 @@
-import React from "react";
 import * as THREE from "three";
 import API from "./../../utils/API";
 
@@ -7,7 +6,7 @@ const ThreeImagePlane = (scene, camera, renderer, props) => {
     let imagesArray = [];
 
     if (props.props) {
-    console.log(props.props)
+    console.log(props)
     API.getImageByUser(props.props).then((res) =>  {
     imagesArray = res.data.data.reverse();
     for (let i = 0; i < imagesArray.length; i++)  {
