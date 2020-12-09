@@ -44,11 +44,12 @@ const ImageSearchObj = () => {
   }
 
   function deleteUserImage() {
-    API.deleteImage(id, {
-      title: updateImgObj.title,
-    }).then((res) => {
-      console.log(res);
-    });
+    axios
+      .delete(`/api/v1/images/${id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+      history.goBack();
   }
 
   function handleInputChange(event) {
