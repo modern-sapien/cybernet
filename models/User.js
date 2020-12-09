@@ -86,7 +86,7 @@ UserSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-// Cascase delete images when a user is deleted
+// Cascade delete images when a user is deleted
 UserSchema.pre("remove", async function (next) {
   console.log(`images being removed from user ${this._id}`);
   await this.model("Image").deleteMany({ user: this._id });

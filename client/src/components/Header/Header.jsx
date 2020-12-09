@@ -5,11 +5,8 @@ const Header = () => {
     return (
         <>
         <Link to="/">
-        <div className="row header-background">
-        <div className="header-background col s2 m2 l2">instavram</div>
-        </div>
+        <div className="header-background col s2 m2 l2">INSTAVRAM</div>
         </Link>
-        
         </>
     );
 };

@@ -41,6 +41,7 @@ const ImageSearchObj = () => {
       .catch((err) => {
         console.log(err);
       });
+    window.location.reload()
   }
 
   function deleteUserImage() {
@@ -64,6 +65,7 @@ const ImageSearchObj = () => {
   return (
     <>
       <div className="user-form-modal row">
+          <div className="user-form-modal-background">
         <form action="">
           title
           <input
@@ -94,11 +96,12 @@ const ImageSearchObj = () => {
             value="cancel"
             onClick={goBack}
           >
-            Cancel
+            Back
           </div>
         </form>
+        </div>
       </div>
-
+        
       <SoloMain props={id} />
     </>
   );
