@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Main from "./../../containers/Main/Main";
 import API from "./../../utils/API";
 import axios from "axios";
@@ -51,7 +51,7 @@ const ImagePost = () => {
         axios.post(`/api/v1/users/${userId._id}/images`, fd)
         .then(res => 
           console.log(res),
-          window.location.reload()
+          useHistory.go(`user/${id}/images`)
         )
     }
 

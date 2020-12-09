@@ -50,7 +50,7 @@ const NavBarBtm = () => {
     if (authUser !== undefined) {
       history.push(`/user/${authUser}/images`);
     } else {
-      history.push("/");
+      history.go("/");
     }
   };
 
