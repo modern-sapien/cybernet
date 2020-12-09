@@ -54,8 +54,9 @@ exports.getImage = asyncHandler(async (req, res, next) => {
 // @route   POST /api/v1/users/:userId/images
 // @access  Private
 exports.addImage = asyncHandler(async (req, res, next) => {
-  console.log(req)
-  
+  console.log(req.files)
+  console.log(req.body)
+
   req.body.user = req.user.id
   
   req.params.user = req.params.userId;

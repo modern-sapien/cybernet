@@ -62,7 +62,7 @@ function App() {
           <Route  exact path="/user/:id/images" component={ImagePost} />
           <Route  exact path="/user/:id/gallery" component={SoloMain} />
           
-          <Route  exact path="/images" component={Main} />
+          <Route  exact path="/images" component={ImageSearch} />
           <Route  exact path="/images/post" component={ImagePost} />
           <Route  exact path="/images/:id" component={ImageSearchObj} />
 

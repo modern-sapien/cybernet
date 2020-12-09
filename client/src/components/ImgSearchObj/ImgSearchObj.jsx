@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SearchObj = ({ title, id }) => {
+const ImgSearchObj = ({ title, id }) => {
   return (
     <>
-      <Link to={`/images/${id}`}>
+      <Link to={`/search/${id}`}>
         <div className="searchObj col s12 m12 l12 ">{title}</div>
       </Link>
     </>
   );
 };
 
-export default SearchObj;
+export default ImgSearchObj;

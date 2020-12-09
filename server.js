@@ -21,7 +21,6 @@ const users = require("./routes/users");
 const images = require("./routes/images");
 const comments = require("./routes/comments");
 
-
 const PORT = process.env.PORT || 3001;
 
 // Middleware

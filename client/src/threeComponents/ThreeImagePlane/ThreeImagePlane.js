@@ -27,7 +27,7 @@ const ThreeImagePlane = (scene, camera, renderer, props) => {
       const mat = new THREE.Mesh(geoFrame, matFrame)
       scene.add(mat);
 
-      mat.position.set(0, i * -450, -5);
+      mat.position.set(0, i * -450, -10);
       }
     })
     } else {
