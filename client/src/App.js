@@ -14,7 +14,7 @@ import ImageSearchObj from "./containers/ImageSearchObj/ImageSearchObj"
 import ImagePost from "./containers/ImagePost/ImagePost"
 
 import UserSearch from "./containers/UserSearch/UserSearch"
-import UserSearchObj from "./containers/UserSearchObj/UserSearchObj"
+import UserGallery from "./containers/UserGallery/UserGallery"
 
 // COMPONENTS
 import Header from "./components/Header/Header"
@@ -26,8 +26,6 @@ import API from "./utils/API";
 // CONTEXT
 import ImagesContext from "./context/ImagesContext";
 import UsersContext from "./context/UsersContext";
-
-
 
 function App() {
   const [ imagesState, setImagesState ] = useState();
@@ -60,14 +58,14 @@ function App() {
           <Route  exact path="/newuser" component={AuthNewUser} />
           <Route  exact path="/user/:id" component={AuthUpdateUser} />
           <Route  exact path="/user/:id/images" component={ImagePost} />
-          <Route  exact path="/user/:id/gallery" component={SoloMain} />
+          <Route  exact path="/user/:id/gallery" component={UserGallery} />
           
           <Route  exact path="/images" component={ImageSearch} />
           <Route  exact path="/images/post" component={ImagePost} />
           <Route  exact path="/images/:id" component={ImageSearchObj} />
 
           <Route exact path="/search" component={UserSearch} />
-          <Route exact path="/search/:id" component={UserSearchObj} />
+          <Route exact path="/search/:id" component={UserGallery} />
 
         </Switch>
       <NavBarBtm />
