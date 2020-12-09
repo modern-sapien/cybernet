@@ -14,7 +14,7 @@ body {
 
 .header-background {
   font-size: 1.1rem;
-  color: black;
+  color: black !important;
   font-weight: bolder;
   opacity: 85%;
   height: 50px;
