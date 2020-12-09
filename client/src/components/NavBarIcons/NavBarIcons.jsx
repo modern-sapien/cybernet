@@ -7,7 +7,7 @@ const NavBarIcons = (props) => {
         <>
         {props.icons.map((icon) => (
         <Link to={`${icon.url}`}>
-        <div className="col s2 bottom-nav-content" onClick={icon.clickMe} >
+        <div className="col s2 bottom-nav-content" onClick={icon.clickMe} key={icon.id} >
         <img src={icon.img} alt={icon.name} height="24px"/></div> 
         </Link>
         ))}

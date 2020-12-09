@@ -69,11 +69,11 @@ const NavBarBtm = () => {
         <NavBarIcons icons={icons} />
 
         <div className="col s2 bottom-nav-content" onClick={postImageClick}>
-          <img src={upload_img} alt="upload" height="24px" />
+          <img src={upload_img} alt="upload" height="24px" key="3"/>
         </div>
 
         <div className="col s2 bottom-nav-content" onClick={accountClick}>
-          <img src={account_img} alt="account" height="24px" />
+          <img src={account_img} alt="account" height="24px" key="4"/>
         </div>
 
         <div className="col s1 bottom-nav-content"></div>

@@ -49,7 +49,10 @@ const ImagePost = () => {
         fd.append("user", imageObj.user);
         fd.append("title", imageObj.title);
         axios.post(`/api/v1/users/${userId._id}/images`, fd)
-        .then(res => {console.log(res)})
+        .then(res => 
+          console.log(res),
+          window.location.reload()
+        )
     }
 
   function postImage() {
