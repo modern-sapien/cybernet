@@ -214,3 +214,15 @@ body {
   margin-bottom: 0px !important;
   padding: 0px !important;
 }
+
+.preview-image {
+  min-height: 30%;
+  height: 200px;
+  width: 200px;
+  min-width: auto;
+  position: fixed;
+  align-self: center;
+  top: 20%;
+  right: 40%;
+  left: 40%
+}

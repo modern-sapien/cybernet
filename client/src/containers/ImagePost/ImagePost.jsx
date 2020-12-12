@@ -1,11 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Main from "./../../containers/Main/Main";
+import SoloMain from "./../../containers/SoloMain/SoloMain";
 import API from "./../../utils/API";
 import axios from "axios";
 
 const ImagePost = () => {
   const { id } = useParams();
+  
+  // new image upload 
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [previewSource, setPreviewSource] = useState();
+
+  const handleFileInputChange = (e) => {
+    setPreviewSource("")
+    let file = e.target.files[0]
+    previewFile(file);
+  }
+
+  const previewFile = (file) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result)
+    }
+  }
+  
   const [ fileState, setFileState] = useState({
       selectedFile: null
   });
@@ -69,9 +90,13 @@ const ImagePost = () => {
 
   return (
     <>
+    {previewSource && (  <SoloMain props={previewSource} />
+    
+    // <img src={previewSource}  alt="chosen" className="preview-image" /> 
+    )}
       <div className="img-upload-modal row">
         <div className="img-upload-form">
-          <form action="post" className="" enctype="multipart/form-data">
+          <form action="post" className="" encType="multipart/form-data">
             <input
               type="text"
               id="title"
@@ -86,9 +111,18 @@ const ImagePost = () => {
               id="image"
               name="image"
               accept="image/*"
+              value={fileInputState}
+              onChange={handleFileInputChange}
+            />
+            {/* <input
+              className="col s12 m12 l12 "
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
               onChange={handleInputChange}
               onChange={fileSelectedHandler}
-            />
+            /> */}
             <button className="col s12 m12 l12 form-btn white-text" onClick={fileUploadHandler}>File Upload</button>
           </form>
         </div>

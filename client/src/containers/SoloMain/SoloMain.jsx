@@ -1,7 +1,6 @@
 import React, {useEffect, useContext, useState} from 'react';
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import ThreeGallery from "./../../threeComponents/ThreeGallery/ThreeGallery"
 import ThreeSoloImage from "./../../threeComponents/ThreeSoloImage/ThreeSoloImage"
 
 const SoloMain = (props) => {
