@@ -7,28 +7,50 @@ import axios from "axios";
 
 const ImagePost = () => {
   const { id } = useParams();
-  
-  // new image upload 
+
+  // new image upload
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [previewSource, setPreviewSource] = useState();
 
   const handleFileInputChange = (e) => {
-    setPreviewSource("")
-    let file = e.target.files[0]
+    setPreviewSource("");
+    let file = e.target.files[0];
     previewFile(file);
-  }
+  };
 
   const previewFile = (file) => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      setPreviewSource(reader.result)
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const handleSubmitFile = (e) => {
+    console.log("submitting");
+    e.preventDefault();
+    if (!previewSource) return;
+    uploadImage(previewSource);
+  };
+
+  const uploadImage = async (base64EncodedImage) => {
+    // console.log(base64EncodedImage);
+    try {
+      await fetch("/api/v1/images/upload", {
+        method: "POST",
+        body: JSON.stringify({
+          data: base64EncodedImage }),
+          headers: {"Content-type": "application/json"
+        },
+      });
+    } catch (error) {
+      console.log(error);
     }
-  }
-  
-  const [ fileState, setFileState] = useState({
-      selectedFile: null
+  };
+
+  const [fileState, setFileState] = useState({
+    selectedFile: null,
   });
   const [userId, setUserId] = useState({
     _id: "",
@@ -57,24 +79,22 @@ const ImagePost = () => {
     setImageUser(id);
   }, []);
 
-  function fileSelectedHandler(event)  {
-        console.log(event.target.files[0]);
-        console.log(event.target.type);
-        setFileState(event.target.files[0]);
-    }
+  function fileSelectedHandler(event) {
+    console.log(event.target.files[0]);
+    console.log(event.target.type);
+    setFileState(event.target.files[0]);
+  }
 
-    function fileUploadHandler(event) {
-        event.preventDefault();
-        const fd = new FormData();
-        fd.append("image", fileState, fileState.name)
-        fd.append("user", imageObj.user);
-        fd.append("title", imageObj.title);
-        axios.post(`/api/v1/users/${userId._id}/images`, fd)
-        .then(res => 
-          console.log(res),
-          useHistory.go(`user/${id}/images`)
-        )
-    }
+  function fileUploadHandler(event) {
+    event.preventDefault();
+    const fd = new FormData();
+    fd.append("image", fileState, fileState.name);
+    fd.append("user", imageObj.user);
+    fd.append("title", imageObj.title);
+    axios
+      .post(`/api/v1/users/${userId._id}/images`, fd)
+      .then((res) => console.log(res), useHistory.go(`user/${id}/images`));
+  }
 
   function postImage() {
     API.addImage(imageObj.user, {
@@ -90,10 +110,11 @@ const ImagePost = () => {
 
   return (
     <>
-    {previewSource && (  <SoloMain props={previewSource} />
-    
-    // <img src={previewSource}  alt="chosen" className="preview-image" /> 
-    )}
+      {previewSource && (
+        <SoloMain props={previewSource} />
+
+        // <img src={previewSource}  alt="chosen" className="preview-image" />
+      )}
       <div className="img-upload-modal row">
         <div className="img-upload-form">
           <form action="post" className="" encType="multipart/form-data">
@@ -123,13 +144,17 @@ const ImagePost = () => {
               onChange={handleInputChange}
               onChange={fileSelectedHandler}
             /> */}
-            <button className="col s12 m12 l12 form-btn white-text" onClick={fileUploadHandler}>File Upload</button>
+            {/* <button className="col s12 m12 l12 form-btn white-text" onClick={fileUploadHandler}>File Upload</button> */}
+            <button
+              className="col s12 m12 l12 form-btn white-text"
+              onClick={handleSubmitFile}
+            >
+              File Upload
+            </button>
           </form>
         </div>
       </div>
-
       <div className="img-upload-modal-background"></div>
-      <Main props={id}/>
     </>
   );
 };

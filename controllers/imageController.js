@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const asyncHandler = require("../middleware/async");
 const Image = require("../models/Image");
 const User = require("../models/User");
-
+const { cloudinary } = require("../utils/cloudinary");
 
 // @desc    Get images
 // @route   GET /api/v1/images
@@ -13,18 +13,15 @@ const User = require("../models/User");
 exports.getImages = asyncHandler(async (req, res, next) => {
   if (req.params.userId) {
     const images = await Image.find({ user: req.params.userId });
-  
+
     return res.status(200).json({
       success: true,
       count: images.length,
-      data: images
-    })
+      data: images,
+    });
   } else {
-    const images = await Image.find()
-    res.status(200).json(
-      {success: true,
-      count: images.length,
-      data: images})
+    const images = await Image.find();
+    res.status(200).json({ success: true, count: images.length, data: images });
   }
 });
 
@@ -53,12 +50,33 @@ exports.getImage = asyncHandler(async (req, res, next) => {
 // @desc    Add image with file image upload
 // @route   POST /api/v1/users/:userId/images
 // @access  Private
-exports.addImage = asyncHandler(async (req, res, next) => {
-  console.log(req.files)
-  console.log(req.body)
+exports.uploadImage = asyncHandler(async (req, res, next) => {
+  // console.log(req.body.data)
+  try {
+    const fileStr = req.body.data;
+    const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: "vram_setup"
+    });
+    console.log(uploadedResponse);
+    res.json({
+      success: true,
+      data: uploadedResponse,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({success: false, message: "image upload to Cloudinary failed" })
+  }
+});
 
-  req.body.user = req.user.id
-  
+// @desc    Add image with file image upload
+// @route   POST /api/v1/users/:userId/images
+// @access  Private
+exports.addImage = asyncHandler(async (req, res, next) => {
+  console.log(req.files);
+  console.log(req.body);
+
+  req.body.user = req.user.id;
+
   req.params.user = req.params.userId;
 
   const user = await User.findById(req.params.userId);
@@ -101,15 +119,15 @@ exports.addImage = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse(`Problem with file upload`), 500);
     }
 
-  const image = await Image.create({
+    const image = await Image.create({
       title: req.body.title,
       user: req.body.user,
-      image: `${process.env.FILE_UPLOAD_PATH_NO_DOT}/${file.name}`      
-      });
+      image: `${process.env.FILE_UPLOAD_PATH_NO_DOT}/${file.name}`,
+    });
 
     res.status(200).json({
       success: true,
-      data: image
+      data: image,
     });
   });
 });

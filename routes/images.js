@@ -5,6 +5,7 @@ const {
   getImage,
   addImage,
   updateImage,
+  uploadImage,
   deleteImage,
 } = require("../controllers/imageController");
 
@@ -32,8 +33,14 @@ router
     // }),
     getImages
   )
-  .post( protect, addImage );
+  .post(protect, addImage);
 
-router.route("/:id").get(getImage).put(protect, updateImage).delete(protect, deleteImage);
+router.route("/upload").post(protect, uploadImage);
+
+router
+  .route("/:id")
+  .get(getImage)
+  .put(protect, updateImage)
+  .delete(protect, deleteImage);
 
 module.exports = router;
