@@ -5,12 +5,15 @@ const ImageSchema = new mongoose.Schema({
     title: {
         type: String,
         trim: true,
-        required: [true, "please add a title"]
+        required: false
     },
-    slug: String,
     image: {
         type: String,
         required: [true, 'please add an image']
+    },
+    cloudID: {
+        type: String,
+        required: false
     },
     createdAt: {
         type: Date,
