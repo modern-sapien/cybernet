@@ -51,21 +51,36 @@ exports.getImage = asyncHandler(async (req, res, next) => {
 // @route   POST /api/v1/users/:userId/images
 // @access  Private
 exports.uploadImage = asyncHandler(async (req, res, next) => {
-  // console.log(req.body.data)
-  try {
-    const fileStr = req.body.data;
-    const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
-      upload_preset: "vram_setup"
-    });
-    console.log(uploadedResponse);
-    res.json({
-      success: true,
-      data: uploadedResponse,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({success: false, message: "image upload to Cloudinary failed" })
+
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    return next(
+      new ErrorResponse(`No user with the id of ${req.user._id}`),
+      404
+    );
   }
+
+  if (!req.body.data.startsWith("data:image")) {
+    return next(new ErrorResponse(`Please upload an image file`), 404);
+  }
+
+  const fileStr = req.body.data
+    const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: "vram_setup",
+    });
+
+    const image = await Image.create({
+      title: req.body.title,
+      user: req.user._id,
+      image: uploadedResponse.secure_url,
+      cloudID: uploadedResponse.asset_id
+    });
+    
+    res.status(200).json({
+    success: true,
+    data: image,
+  });
 });
 
 // @desc    Add image with file image upload
@@ -74,8 +89,6 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
 exports.addImage = asyncHandler(async (req, res, next) => {
   console.log(req.files);
   console.log(req.body);
-
-  req.body.user = req.user.id;
 
   req.params.user = req.params.userId;
 

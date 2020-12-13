@@ -28,7 +28,6 @@ const ImagePost = () => {
   };
 
   const handleSubmitFile = (e) => {
-    console.log("submitting");
     e.preventDefault();
     if (!previewSource) return;
     uploadImage(previewSource);
@@ -40,10 +39,11 @@ const ImagePost = () => {
       await fetch("/api/v1/images/upload", {
         method: "POST",
         body: JSON.stringify({
-          data: base64EncodedImage }),
-          headers: {"Content-type": "application/json"
-        },
-      });
+          data: base64EncodedImage,
+          title: imageObj.title
+        }),
+        headers: { "Content-type": "application/json" },
+      }).then((res) => console.log(res));
     } catch (error) {
       console.log(error);
     }
@@ -110,11 +110,7 @@ const ImagePost = () => {
 
   return (
     <>
-      {previewSource && (
-        <SoloMain props={previewSource} />
-
-        // <img src={previewSource}  alt="chosen" className="preview-image" />
-      )}
+      {previewSource && <SoloMain props={previewSource} />}
       <div className="img-upload-modal row">
         <div className="img-upload-form">
           <form action="post" className="" encType="multipart/form-data">
@@ -135,7 +131,8 @@ const ImagePost = () => {
               value={fileInputState}
               onChange={handleFileInputChange}
             />
-            {/* <input
+            {/* Og
+            <input
               className="col s12 m12 l12 "
               type="file"
               id="image"
@@ -144,7 +141,7 @@ const ImagePost = () => {
               onChange={handleInputChange}
               onChange={fileSelectedHandler}
             /> */}
-            {/* <button className="col s12 m12 l12 form-btn white-text" onClick={fileUploadHandler}>File Upload</button> */}
+            {/* <button className="col s12 m12 l12 form-btn white-text" onClick={fileUploadHandler}>File Upload OG</button> */}
             <button
               className="col s12 m12 l12 form-btn white-text"
               onClick={handleSubmitFile}
