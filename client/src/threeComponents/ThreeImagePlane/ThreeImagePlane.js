@@ -10,7 +10,7 @@ const ThreeImagePlane = (scene, camera, renderer, props) => {
     API.getImageByUser(props.props).then((res) =>  {
     imagesArray = res.data.data.reverse();
     for (let i = 0; i < imagesArray.length; i++)  {
-      const texture = new THREE.TextureLoader().load(`/${imagesArray[i].image}`);
+      const texture = new THREE.TextureLoader().load(`${imagesArray[i].image}`);
       const geometry = new THREE.PlaneGeometry(400, 400, 32);
       const material = new THREE.MeshBasicMaterial({
         map: texture,
@@ -37,7 +37,7 @@ const ThreeImagePlane = (scene, camera, renderer, props) => {
     if (imagesArray.length > 0) {
     for (let i = 0; i < imagesArray.length; i++)  {
     if (imagesArray[i].image) {
-    const texture = new THREE.TextureLoader().load(`/${imagesArray[i].image}`);
+    const texture = new THREE.TextureLoader().load(`${imagesArray[i].image}`);
     const geometry = new THREE.PlaneGeometry(400, 400, 32);
     const material = new THREE.MeshBasicMaterial({
       map: texture,

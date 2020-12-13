@@ -5,7 +5,8 @@ const ImageSchema = new mongoose.Schema({
     title: {
         type: String,
         trim: true,
-        required: false
+        required: false,
+        default: Date.now
     },
     image: {
         type: String,

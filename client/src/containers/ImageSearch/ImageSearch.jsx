@@ -72,7 +72,7 @@ const ImageSearch = () => {
             title={image.title.toLowerCase()}
             id={image._id}
           />
-        ))}
+        )).reverse()}
       </div>
         <Main />
     </>

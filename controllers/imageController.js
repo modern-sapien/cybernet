@@ -74,7 +74,7 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
       title: req.body.title,
       user: req.user._id,
       image: uploadedResponse.secure_url,
-      cloudID: uploadedResponse.asset_id
+      cloudID: uploadedResponse.public_id
     });
     
     res.status(200).json({

@@ -30,7 +30,7 @@ const ThreeSoloImage = (scene, camera, renderer, props) => {
     API.getImage(props.props).then((res) => {
       let image = res.data.data;
 
-      const texture = new THREE.TextureLoader().load(`/${image.image}`);
+      const texture = new THREE.TextureLoader().load(`${image.image}`);
       const geometry = new THREE.PlaneGeometry(400, 400, 32);
       const material = new THREE.MeshBasicMaterial({
         map: texture,
