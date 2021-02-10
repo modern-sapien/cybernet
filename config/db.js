@@ -8,7 +8,7 @@ const connectDB = async () => {
         useFindAndModify: false,
     })
 
-    console.log(`MongoDB Connect: ${conn.connection.host}`.cyan.underline.bold)
+    console.log(`MongoDB Connect: ${(await conn).connection.host}`.cyan.underline.bold)
 }
 
 module.exports = connectDB
