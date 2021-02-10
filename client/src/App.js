@@ -1,14 +1,12 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
 // CONTAINERS
 import AuthLogin from "./containers/AuthLogin/AuthLogin"
 import AuthNewUser from "./containers/AuthNewUser/AuthNewUser"
 import AuthUpdateUser from "./containers/AuthUpdateUser/AuthUpdateUser"
 
-import Main from "./containers/Main/Main"
-import SoloMain from "./containers/SoloMain/SoloMain"
 import ImageSearch from "./containers/ImageSearch/ImageSearch"
 import ImageSearchObj from "./containers/ImageSearchObj/ImageSearchObj"
 import UserImageUpDel from "./containers/UserImageUpDel/UserImageUpDel"
